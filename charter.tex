@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Implementación en un Robot un Sistema Embebido de Aprendizaje por Refuerzo} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,18 +11,18 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Ing. Pablo Daniel Folino} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
+\director{Ing. Juan Carlos Gomez}
 \pertenenciaDirector{pertenencia} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Grupo de Inteligencia Artificial y Robótica-GIAR}
+\empresaCliente{UTN-FRBA}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -34,7 +34,7 @@
  
 \fechaINICIO{22 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlanificacion{22 de Agosto de 2020} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{22 de diciembre de 2020}		%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{01 de junio de 2021}		%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -63,7 +63,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
-1.1      &                                                                 & dd/mm/aaaa \\ \hline
+1.1      & Primera versión, hasta el punto 6 del documento.                                            & 10/07/2020 \\ \hline
 1.2      & Otro ejemplo \newline
 		   Con texto partido \newline
 		   En varias líneas \newline
@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema de control de temperatura de un calefón, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo preliminar de un sistema robótico capaz de aprender a moverse en línea recta, hacia adelante y atrás, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -107,54 +107,78 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del Proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+El objetivo es probar distintos algoritmos de Aprendizaje por Refuerzo en una plataforma robótica de bajo costo, utilizandola en un principio para formar recursos humanos dentro del Grupo de Inteligencia Artificial y Robótica(GIAR), y una vez afianzada la espertiz de la misma hacer una transferencia a los distintos clientes que posee el grupo, como materias afines de las distintas carreras de grado.
+ 
+Si bien existe en el mercado técnicas que facilitan el control de movimientos de un robot con buenas prestaciones, pero cuando cambian fuertemente las condiciones de contorno  el sistema no responde en forma adecuada. Se busca no tener esa limitación utilizando herramientas de Apredizaje por Refuerzo (AR) .
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+El sistema (Hardware-Software) tiene que ser robusto para que permita realizar las distintas pruebas a las que se va a someter.
 
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
+Este proyecto está alineado con los objetivos que posee la \href{https://www.frba.utn.edu.ar/secretarias/}{"Secretaría de Ciencia, Tecnología e Innovación Productiva"(SeCyT)}, la \href{https://www.frba.utn.edu.ar/transferencia/transferencia-tecnologica/}{"Subsecretaría de Transferencia Tecnológica"(STT)} y el \href{https://www.frba.utn.edu.ar/ciie/}{"Centro de Investigación, Innovación Educativa"(CIIE)} dependientes de la \href{https://www.frba.utn.edu.ar/}{Universidad Tecnológica Nacional-Facultad Regional Bs.As.(UTN-FRBA)}.
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+%\begin{consigna}{red}
+%El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
+%Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+
+%Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+
+%\begin{itemize}
+%\item ¿Cómo se vincula este proyecto con la misión de la organización?
+%\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
+%\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
+%\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
+%\item ¿Cuales son las necesidades que debe satisfacer?
+%\item ¿Por dónde pasa la innovación?
+%\end{itemize}
+
+A continuación se observa las principales características del modelo de negocio del Grupo de Inteligencia artificial y Robótica.
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/GIAR.jpg}
+\caption{Diagrama Modelo de Negocios \textit{GIAR}}
+\label{fig:ModNegGIAR}
+\end{figure}
+
+
+Se pretende diseñar un Sistema Embebido para desplazar un pequeño robot de 20x15x10cm (aprox.) traccionado por dos motores de corriente contínua en configuración triciclo, con  un módulo GPS, y conexión WIFI, como se observa el la Figura \ref{fig:diagConceptual}. 
+
+%La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
 
 \vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
+\includegraphics[width=.8\textwidth]{./Figuras/Robot.png}
+\caption{Diagrama conceptual del sistema}
+\label{fig:diagConceptual}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
-\end{consigna}
+EL cerebro del sistema será una placa EDU-CIAA-NPX, la cual recibirá la información de los distintos sensores y controlará los actuadores. Los motores serán controlados por un puente H(driver) mediante pulsos de PWM(modulación de ancho de pulso). EL cerebro recibirá información de comunicación por un módulo WIFI(del tipo Esp8266), y de un módulo GPS. En lo posible, también se instalará un acelerómetro para usarlo en la lógica del algoritmo de Aprendizaje por Refuerzo.
+El sistema será alimentado por un pack de baterías, las cuales serán seleccionadas en función del consumo/autonomía y peso del robot.
+Además, para poder comparar el sistema de control embebido en la placa principal, se instalará un control PID(Proporcional, Integral y Derivativo), sintonizado a las condiciones estándares de funcionamiento del sistema.
+El robot estará diseñado para moverse en espacios interiores(indoor), en un suelo plano y liso, en condiciones de temperaturas estándares entre 5ºC y 40ºC, y humedad relativa normales(entre 40\% y 70\%). 
+
+
+%El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
+%\end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
+%\begin{consigna}{red} 
+%Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
  
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
+%Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
  
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
+%Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
+%\begin{itemize}
+%\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
+%\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
+%\end{itemize}
+%Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -163,163 +187,235 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
-Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
-Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Auspiciante   & -  				& -					& -	   		\\ \hline
+Cliente       & \clientename    &\empclientename	& -   		\\ \hline
+Impulsor      & SeCyT    		&\empclientename 	& -   		\\ \hline
+Responsable   & \authorname     & FIUBA        		& Alumno 	\\ \hline
+Colaboradores & Miembros del GIAR   & UTN-FRBA     		& -       	\\ \hline
+Orientador    & \supname	    & \pertesupname 	& Director	Trabajo final \\ \hline
+Equipo        & -          		& -             	& -        	\\ \hline
+Opositores    & Otros Grupos Invest.    & UTN-FRBA             	& -        	\\ \hline
+Usuario final & Alumnos de materia -IA     &\empclientename	& -        	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
+%El Director suele ser uno de los Orientadores.
+%No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
+%No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
 
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
+%Sería deseable listar a continuación de la tabla las principales características de cada interesado.
  
-Por ejemplo:
+%Por ejemplo:
+%\begin{itemize}
+%\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
+%\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
+%\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
+%\end{itemize}
+
+%\end{consigna}
+
 \begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
+\item Orientador:Ing. Juan Carlos Gomez, posee mucha experiencia en el tema debido a su trabajo, y formación  profesional, pero no posee mucho tiempo.
+\item Cliente:posee muchas restricciones con respecto a los costos.
 \end{itemize}
-
-\end{consigna}
-
-
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
+%\begin{consigna}{red}
+%¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
+%\end{consigna}
 
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+El propósito de este proyecto es desarrollar y probar el algoritmo de Aprendizaje por Refuerzo para poder mover un robot, y aplicar los conocimientos en materias de Inteligencia Artificial  dictadas en la UTN-FRBA.
+
+
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+%\begin{consigna}{red}
+%¿Qué se incluye y que no se incluye en este proyecto?
+%Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+%Explicitar todo lo quede comprendido dentro del alcance del proyecto.
+%Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
+%\end{consigna}
+ 
+El objetivo del proyecto es el desarrollo de un prototipo de plataforma educativa móvil para probar algoritmos de Aprendizaje por Refuerzo y comprende:
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+\begin{itemize}
+\item Diseñar y armar el prototipo del hardware del robot, tipo triciclo.
+\item Diseñar e implementar en la placa EDU-CIAA-NXP el software embebido de A.R.
+\item Diseñar comandos para cambiar el modo de funcionaniento desde línea de comandos, desde una PC. 
+\item Realizar el proyecto dentro del tiempo destinado al mismo.
+\end{itemize}
 
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
+El proyecto no incluye:
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
+\begin{itemize}
+\item Realizar pruebas de estructuras de hardware, para saber la vida últil del sistema.
+\item Diseñar una interface gráfica amigable para cambiar los distintos modos de funcionamiento.
+\item Diseñar y/o armar el cargador de baterías.
+\item Carcasa, ni gabinete.
+\end{itemize}
 
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+%\begin{consigna}{red}
+%``Para el desarrollo del presente proyecto se supone que: ...''
 
+Se supone para el siguiente proyecto que:
 \begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
+\item Se posee el presupuesto para comprar todo lo relacionado con el hardware necesario para construir el robot. 
+\item Se contará con acceso a todo el equipamiento para la construcción y testeo de los distintos elementos electrónicos.
+\item La complejidad de la programación se restringirá en función de las horas de trabajo propuestas para hacer este proyecto.
+\item Se podrá conseguir los distintos elementos electrónicos en este contexto de pandemia.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
+%Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
+%\end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
+%\begin{consigna}{red}
+%Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
 
 \begin{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Requerimientos de funcionamiento general
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2
-	\item Requerimiento 3 (prioridad menor)
+	\item El sistema debe tener una autonomía de por lo menos 10 minutos.
+	\item Se debe comunicar en forma inalámbrica. 
+	\item Debe ser un robot pequeño de dimensiones(no mayor a 25x20x15cm).
+	\item Debe ser un robot liviano (no mayor a 1.25Kg)
 	\end{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Grupo de requerimientos asociados con el hardware
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2 (prioridad menor)
+	\item Debe ser fácilmente replicable.
+	\item Debe poseer la menor cantidad de piezas posibles. 
+	\item El cuerpo del robot debe albergar todo el hardware(motores, placa EDU-CIAA, drivers de motores, baterías, etc.) necesario para el funcionamiento normal.
+	\item Debe poseer un botón de reset de fácil acceso, para interrumpir el funcionamiento del robot en caso de urgencia.
+	\end{enumerate}
+\item Grupo de requerimientos asociados con el software
+	\begin{enumerate}
+	\item Se programará usando Lenguaje C, utilizando el modelo de capas y las sapi del proyecto CIAA.
+	\item Deberá poseer un modo DEBUG.
+	\item La capacidad de uso de memoria no debe exceder a la placa EDU-CIAA-NXP.
+	\end{enumerate}
+\item Requerimientos no funcionales
+	\begin{enumerate}
+	\item El hardware no debe tener aristas peligrosas para prevenir accidentes. 
+	\item El robot debe estar construido con elementos no tóxico para las personas.
+	\item La velocidad que desarrolla el robot no debe producir daños a las personas.
 	\end{enumerate}
 \end{enumerate}
 
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
+%Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
+%De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
+%Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
 
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
+%No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
 
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
+%Y al escribirlos seguir las siguientes reglas:
+%\begin{itemize}
+%\item Ser breve y conciso (nadie lee cosas largas). 
+%\item Ser específico: no dejar lugar a confusiones.
+%\item Expresar los requerimientos en términos que sean cuantificables y medibles.
+%\end{itemize}
 
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
+%\end{consigna}
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Cosas como: 
+%\begin{consigna}{red}
+Al final del proyecto se entregará: 
 \begin{itemize}
-\item Manual de uso
-\item Diagrama esquemático
-\item Código fuente
-\item Diagrama de instalación
-\item Informe final
+\item Prototipo del robot.
+\item Manual de uso.
+\item Diagrama esquemático.
+\item Código fuente.
+\item Diagrama de instalación.
+\item Informe final.
 
 \end{itemize}
 
-\end{consigna}
+%\end{consigna}
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
+%\begin{consigna}{red}
+%Se recomienda mostrar el WBS mediante una lista indexada:
 
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Planificación de tareas (40 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Generación del documento de planificación del proyecto. (30 hs)
+	\item Aprobación y revisión del documento de Planificación del Proyecto. (10 hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Investigación preliminar del hardware a utilizar. (38 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Fabricación del robot. (20 hs)
+	\item Placas electrónicas(placa principal, microcontrolador, drivers,etc). (10 hs)
+	\item Características de los motores.  (4 hs)
+	\item Características de las baterías. (4 hs)
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item Selección y compra de los materiales del hardware. (8 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item Selección de los componentes. (5 hs)
+	\item Compra y adquisición de los mismos.(3 hs)
 	\end{enumerate}
+\item Armado y verificación de la estructura del robot. (30 hs)
+	\begin{enumerate}
+	\item Construcción de las piezas. (15 hs)
+	\item Ensamblaje de piezas. (3 hs)
+	\item Verificación de la estructura. (10 hs)
+	\end{enumerate}
+\item Armado y verificación de la electrónica del robot (10 hs)
+	\begin{enumerate}
+	\item Armado de la placa adaptadora entre EDU-CIAA y los distintos módulos (5 hs)
+	\item Cableado del robot (2 hs)
+	\item Verificación de la electrónica (3 hs)
+	\end{enumerate}	
+\item Desarrollo del software (240 hs)
+	\begin{enumerate}
+	\item Módulo PWM. (25 hs)
+	\item Módulo WIFI y protocolo de comunicaciones. (40 hs)
+	\item Módulo GPS. (25 hs)
+	\item Módulo Acelerómetro.  (25 hs)
+	\item Sensores de fines de carrera. (30 hs)
+	\item Módulo de Aprendizaje por Refuerzo. (40 hs)
+	\item Módulo PID. (25 hs)
+	\item Integración de los distintos módulos. (30 hs)
+	\end{enumerate}	
+\item Verificación del software(Testing). (75 hs)
+	\begin{enumerate}
+	\item Diseño de pruebas  de ensayo de los distintos módulos. (25 hs)
+	\item Diseño de las distintas pruebas de navegación. (30 hs)
+	\item Comparación de las distintas estrategias de navegación. (20 hs)
+	\end{enumerate}	
+\item Validación del sistema completo (40 hs)
+	\begin{enumerate}
+	\item Ensayos de verificación del cliente en froma parcial (20 hs)
+	\item Ensayos de validación final (20 hs)
+	\end{enumerate}	
+\item Presentación del trabajo (150 hs)
+	\begin{enumerate}
+	\item Redacción de informes de avance. (10 hs)
+	\item Redacción de manual de uso. (20 hs)
+	\item Redacción de circuitos esquemáticos. (20 hs)
+	\item Redacción de memoria del proyecto. (80 hs)
+	\item Preparación de la presentación pública del trabajo final. (20 hs)
+	\end{enumerate}					
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: (631 hs)
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
+%Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
 
-\end{consigna}
+%\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
