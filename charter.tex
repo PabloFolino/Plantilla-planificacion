@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Implementación en un Robot un Sistema Embebido de Aprendizaje por Refuerzo} 
+\titulo{Implementación  de aprendizaje por refuerzo en un Robot} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -14,15 +14,15 @@
 \autor{Ing. Pablo Daniel Folino} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Ing. Juan Carlos Gomez}
-\pertenenciaDirector{pertenencia} 
+\director{Ing. Juan Carlos Gómez}
+\pertenenciaDirector{INTI,UTN.BA} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Grupo de Inteligencia Artificial y Robótica-GIAR}
-\empresaCliente{UTN-FRBA}
+\cliente{Ing. Claudio Verrastro}
+\empresaCliente{UTN-FRBA-GIAR}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -33,9 +33,14 @@
 \pertenenciaJurTres{pertenencia (3)}
  
 \fechaINICIO{22 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlanificacion{22 de Agosto de 2020} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{01 de junio de 2021}		%Fecha de defensa pública del trabajo final
+\fechaFINALPlanificacion{22 de agosto de 2020} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{02 de agosto de 2021}		%Fecha de defensa pública del trabajo final
 
+%Instalación de paquetes de LaTex
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{multirow}
 
 \begin{document}
 
@@ -61,13 +66,11 @@
 \begin{tabularx}{\linewidth}{@{}|c|X|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
-1.1      & Primera versión, hasta el punto 6 del documento.                                            & 10/07/2020 \\ \hline
-1.2      & Otro ejemplo \newline
-		   Con texto partido \newline
-		   En varias líneas \newline
-		   A propósito                                                     & dd/mm/aaaa \\ \hline
+Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha \\ 
+\hline 1.0      & Creación del documento                                          & 27/06/2020 \\
+\hline 1.1 & Primera versión, hasta el punto 6 del documento.                                            & 10/07/2020 \\
+\hline 1.2 & Segunda versión del documento, se corrigen errores hasta el punto 6 y se entrega hasta el ítem 11 & 31/07/2020 \\ 
+\hline
 \end{tabularx}
 \end{table}
 
@@ -75,7 +78,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 
 
 
-\section{Acta de Constitución del Proyecto}
+\section{Acta de constitución del proyecto}
 \label{sec:acta}
 
 \begin{flushright}
@@ -84,7 +87,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo preliminar de un sistema robótico capaz de aprender a moverse en línea recta, hacia adelante y atrás, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo preliminar de un sistema robótico capaz de aprender a moverse en línea recta, hacia adelante y atrás, y tendrá un presupuesto preliminar estimado de 632 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -104,14 +107,14 @@ Se adjunta a esta acta la planificación inicial.
 
 
 
-\section{Descripción técnica-conceptual del Proyecto a realizar}
+\section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-El objetivo es probar distintos algoritmos de Aprendizaje por Refuerzo en una plataforma robótica de bajo costo, utilizandola en un principio para formar recursos humanos dentro del Grupo de Inteligencia Artificial y Robótica(GIAR), y una vez afianzada la espertiz de la misma hacer una transferencia a los distintos clientes que posee el grupo, como materias afines de las distintas carreras de grado.
+El objetivo es probar distintos algoritmos de Aprendizaje por Refuerzo (AR) en una plataforma robótica de bajo costo, utilizarla en un principio para formar recursos humanos dentro del Grupo de Inteligencia Artificial y Robótica (GIAR). Y una vez afianzada la técnica, hacer una transferencia a los distintos clientes que posee el grupo de investigación, como materias afines de las distintas carreras de grado de la Universidad Tecnológica Nacional-Facultad Regional Buenos Aires.
  
-Si bien existe en el mercado técnicas que facilitan el control de movimientos de un robot con buenas prestaciones, pero cuando cambian fuertemente las condiciones de contorno  el sistema no responde en forma adecuada. Se busca no tener esa limitación utilizando herramientas de Apredizaje por Refuerzo (AR) .
+Si bien existe en el mercado técnicas que facilitan el control de movimientos de un robot con buenas prestaciones, pero al cambiar fuertemente las condiciones de contorno  el sistema no responde en forma adecuada. Se busca no tener esa limitación con la utilización de herramientas de AR.
 
-El sistema (Hardware-Software) tiene que ser robusto para que permita realizar las distintas pruebas a las que se va a someter.
+El sistema (hardware-software) tiene que ser robusto para que permita realizar las distintas pruebas a las que se va a someter.
 
 Este proyecto está alineado con los objetivos que posee la \href{https://www.frba.utn.edu.ar/secretarias/}{"Secretaría de Ciencia, Tecnología e Innovación Productiva"(SeCyT)}, la \href{https://www.frba.utn.edu.ar/transferencia/transferencia-tecnologica/}{"Subsecretaría de Transferencia Tecnológica"(STT)} y el \href{https://www.frba.utn.edu.ar/ciie/}{"Centro de Investigación, Innovación Educativa"(CIIE)} dependientes de la \href{https://www.frba.utn.edu.ar/}{Universidad Tecnológica Nacional-Facultad Regional Bs.As.(UTN-FRBA)}.
 
@@ -130,17 +133,17 @@ Este proyecto está alineado con los objetivos que posee la \href{https://www.fr
 %\item ¿Por dónde pasa la innovación?
 %\end{itemize}
 
-A continuación se observa las principales características del modelo de negocio del Grupo de Inteligencia artificial y Robótica.
+En la figura \ref{fig:ModNegGIAR}, se observa las principales características del modelo de negocio del Grupo de Inteligencia Artificial y Robótica.
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=1\textwidth]{./Figuras/GIAR.jpg}
-\caption{Diagrama Modelo de Negocios \textit{GIAR}}
+\includegraphics[width=\textwidth]{./Figuras/GIAR.jpg}
+\caption{Diagrama modelo de negocios \textit{GIAR}}
 \label{fig:ModNegGIAR}
 \end{figure}
 
 
-Se pretende diseñar un Sistema Embebido para desplazar un pequeño robot de 20x15x10cm (aprox.) traccionado por dos motores de corriente contínua en configuración triciclo, con  un módulo GPS, y conexión WIFI, como se observa el la Figura \ref{fig:diagConceptual}. 
+Se pretende diseñar un Sistema Embebido para desplazar un pequeño robot de 20x15x10 cm (aprox.) traccionado por dos motores de corriente contínua en configuración triciclo, con  un módulo GPS, y conexión WIFI, como se observa en la figura \ref{fig:diagConceptual}. 
 
 %La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
 
@@ -155,10 +158,10 @@ Se pretende diseñar un Sistema Embebido para desplazar un pequeño robot de 20x
 
 \vspace{25px}
 
-EL cerebro del sistema será una placa EDU-CIAA-NPX, la cual recibirá la información de los distintos sensores y controlará los actuadores. Los motores serán controlados por un puente H(driver) mediante pulsos de PWM(modulación de ancho de pulso). EL cerebro recibirá información de comunicación por un módulo WIFI(del tipo Esp8266), y de un módulo GPS. En lo posible, también se instalará un acelerómetro para usarlo en la lógica del algoritmo de Aprendizaje por Refuerzo.
-El sistema será alimentado por un pack de baterías, las cuales serán seleccionadas en función del consumo/autonomía y peso del robot.
-Además, para poder comparar el sistema de control embebido en la placa principal, se instalará un control PID(Proporcional, Integral y Derivativo), sintonizado a las condiciones estándares de funcionamiento del sistema.
-El robot estará diseñado para moverse en espacios interiores(indoor), en un suelo plano y liso, en condiciones de temperaturas estándares entre 5ºC y 40ºC, y humedad relativa normales(entre 40\% y 70\%). 
+El cerebro del sistema será una placa EDU-CIAA-NPX, que recibirá la información de los distintos sensores y controlará los actuadores. Los motores serán controlados por un puente H (driver) mediante pulsos de PWM (modulación de ancho de pulso). La placa recibirá información de comunicación por un módulo WIFI (del tipo Esp8266), y de un módulo GPS. En lo posible, también se instalará un acelerómetro para usarlo en la lógica del algoritmo de AR.
+El sistema será alimentado por un \textit{pack} de baterías, que serán seleccionadas en función del consumo/autonomía y peso del robot.
+Además, para poder comparar el sistema de control embebido en la placa principal, se instalará un control PID (Proporcional, Integral y Derivativo), sintonizado a las condiciones estándares de funcionamiento del sistema.
+El robot estará diseñado para moverse en espacios interiores (\textit{indoor}), en un suelo plano y liso, en condiciones de temperaturas estándares entre 5 ºC y 40 ºC, y humedad relativa normales(entre 40 \% y 70 \%). 
 
 
 %El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
@@ -187,13 +190,13 @@ El robot estará diseñado para moverse en espacios interiores(indoor), en un su
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   & -  				& -					& -	   		\\ \hline
+%Auspiciante   & -  				& -					& -	   		\\ \hline
 Cliente       & \clientename    &\empclientename	& -   		\\ \hline
-Impulsor      & SeCyT    		&\empclientename 	& -   		\\ \hline
+Impulsor      & Secretario de SeCyT    		&\empclientename 	& -   		\\ \hline
 Responsable   & \authorname     & FIUBA        		& Alumno 	\\ \hline
 Colaboradores & Miembros del GIAR   & UTN-FRBA     		& -       	\\ \hline
-Orientador    & \supname	    & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & -          		& -             	& -        	\\ \hline
+Orientador    & \supname	    & \pertesupname 	& Director	trabajo final \\ \hline
+%Equipo        & -          		& -             	& -        	\\ \hline
 Opositores    & Otros Grupos Invest.    & UTN-FRBA             	& -        	\\ \hline
 Usuario final & Alumnos de materia -IA     &\empclientename	& -        	\\ \hline
 \end{tabularx}
@@ -215,8 +218,8 @@ Usuario final & Alumnos de materia -IA     &\empclientename	& -        	\\ \hlin
 %\end{consigna}
 
 \begin{itemize}
-\item Orientador:Ing. Juan Carlos Gomez, posee mucha experiencia en el tema debido a su trabajo, y formación  profesional, pero no posee mucho tiempo.
-\item Cliente:posee muchas restricciones con respecto a los costos.
+\item Orientador: Ing. Juan Carlos Gómez, posee mucha experiencia en el tema debido a su trabajo, y formación  profesional, pero no posee mucho tiempo.
+\item Cliente: posee muchas restricciones con respecto a los costos.
 \end{itemize}
 
 \section{1. Propósito del proyecto}
@@ -226,7 +229,7 @@ Usuario final & Alumnos de materia -IA     &\empclientename	& -        	\\ \hlin
 %¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
 %\end{consigna}
 
-El propósito de este proyecto es desarrollar y probar el algoritmo de Aprendizaje por Refuerzo para poder mover un robot, y aplicar los conocimientos en materias de Inteligencia Artificial  dictadas en la UTN-FRBA.
+El propósito de este proyecto es desarrollar y probar  algoritmos de AR para poder mover un robot, y aplicar los conocimientos en materias de Inteligencia Artificial  dictadas en la UTN-FRBA.
 
 
 
@@ -240,7 +243,7 @@ El propósito de este proyecto es desarrollar y probar el algoritmo de Aprendiza
 %Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
 %\end{consigna}
  
-El objetivo del proyecto es el desarrollo de un prototipo de plataforma educativa móvil para probar algoritmos de Aprendizaje por Refuerzo y comprende:
+El objetivo del proyecto comprende:
 
 \begin{itemize}
 \item Diseñar y armar el prototipo del hardware del robot, tipo triciclo.
@@ -252,7 +255,7 @@ El objetivo del proyecto es el desarrollo de un prototipo de plataforma educativ
 El proyecto no incluye:
 
 \begin{itemize}
-\item Realizar pruebas de estructuras de hardware, para saber la vida últil del sistema.
+\item Realizar pruebas de estructuras de hardware, para saber la vida útil del sistema.
 \item Diseñar una interface gráfica amigable para cambiar los distintos modos de funcionamiento.
 \item Diseñar y/o armar el cargador de baterías.
 \item Carcasa, ni gabinete.
@@ -267,10 +270,10 @@ El proyecto no incluye:
 
 Se supone para el siguiente proyecto que:
 \begin{itemize}
-\item Se posee el presupuesto para comprar todo lo relacionado con el hardware necesario para construir el robot. 
-\item Se contará con acceso a todo el equipamiento para la construcción y testeo de los distintos elementos electrónicos.
-\item La complejidad de la programación se restringirá en función de las horas de trabajo propuestas para hacer este proyecto.
-\item Se podrá conseguir los distintos elementos electrónicos en este contexto de pandemia.
+\item se posee el presupuesto para comprar todo lo relacionado con el hardware necesario para construir el robot. 
+\item se contará con acceso a todo el equipamiento para la construcción y testeo de los distintos elementos electrónicos.
+\item la complejidad de la programación se restringirá en función de las horas de trabajo propuestas para hacer este proyecto.
+\item se podrá conseguir los distintos elementos electrónicos en este contexto de pandemia.
 \end{itemize}
 
 %Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
@@ -287,27 +290,26 @@ Se supone para el siguiente proyecto que:
 	\begin{enumerate}
 	\item El sistema debe tener una autonomía de por lo menos 10 minutos.
 	\item Se debe comunicar en forma inalámbrica. 
-	\item Debe ser un robot pequeño de dimensiones(no mayor a 25x20x15cm).
-	\item Debe ser un robot liviano (no mayor a 1.25Kg)
+	\item Debe ser un robot pequeño de dimensiones(no mayor a 25x20x15 cm).
+	\item Debe ser un robot liviano (no mayor a 1,25 Kg)
 	\end{enumerate}
 \item Grupo de requerimientos asociados con el hardware
 	\begin{enumerate}
-	\item Debe ser fácilmente replicable.
-	\item Debe poseer la menor cantidad de piezas posibles. 
-	\item El cuerpo del robot debe albergar todo el hardware(motores, placa EDU-CIAA, drivers de motores, baterías, etc.) necesario para el funcionamiento normal.
-	\item Debe poseer un botón de reset de fácil acceso, para interrumpir el funcionamiento del robot en caso de urgencia.
+	\item El hardware debe ser fácilmente replicable, utilizando una impresora 3D.
+	\item Debe poseer la menor cantidad de piezas posibles, no mayor a diez. 
+	\item El cuerpo del robot debe albergar todo el hardware (motores, placa EDU-CIAA, drivers de motores, baterías, etc.) necesario para el funcionamiento normal.
+	\item Debe poseer un botón de parada de emergencia de fácil acceso, para interrumpir el funcionamiento del robot en caso de urgencia.
 	\end{enumerate}
 \item Grupo de requerimientos asociados con el software
 	\begin{enumerate}
-	\item Se programará usando Lenguaje C, utilizando el modelo de capas y las sapi del proyecto CIAA.
-	\item Deberá poseer un modo DEBUG.
-	\item La capacidad de uso de memoria no debe exceder a la placa EDU-CIAA-NXP.
+	\item Se programará usando Lenguaje C, utilizando el modelo de capas y las sAPI del proyecto CIAA.
+	\item La herramienta de programación en Lenguaje C deberá poseer un modo DEBUG.
+	\item El uso de memoria no debe exceder a la placa EDU-CIAA-NXP.
 	\end{enumerate}
 \item Requerimientos no funcionales
 	\begin{enumerate}
-	\item El hardware no debe tener aristas peligrosas para prevenir accidentes. 
-	\item El robot debe estar construido con elementos no tóxico para las personas.
-	\item La velocidad que desarrolla el robot no debe producir daños a las personas.
+	\item La estructura del robot no debe tener bordes filosos ni punzantes, que puedan ocasionar lesiones. 
+	\item La velocidad que desarrolla el robot debe inferior a 1 m/seg.
 	\end{enumerate}
 \end{enumerate}
 
@@ -345,271 +347,429 @@ Al final del proyecto se entregará:
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
-
 %\begin{consigna}{red}
 %Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Planificación de tareas (40 hs)
+\item Planificación de tareas. (40 hs)
 	\begin{enumerate}
 	\item Generación del documento de planificación del proyecto. (30 hs)
-	\item Aprobación y revisión del documento de Planificación del Proyecto. (10 hs)
+	\item Aprobación y revisión del documento de planificación del proyecto. (10 hs)
 	\end{enumerate}
 \item Investigación preliminar del hardware a utilizar. (38 hs)
 	\begin{enumerate}
 	\item Fabricación del robot. (20 hs)
-	\item Placas electrónicas(placa principal, microcontrolador, drivers,etc). (10 hs)
+	\item Placas electrónicas(placa principal, microcontrolador, drivers, etc). (10 hs)
 	\item Características de los motores.  (4 hs)
 	\item Características de las baterías. (4 hs)
 	\end{enumerate}
 \item Selección y compra de los materiales del hardware. (8 hs)
 	\begin{enumerate}
 	\item Selección de los componentes. (5 hs)
-	\item Compra y adquisición de los mismos.(3 hs)
+	\item Compra y adquisición.(3 hs)
 	\end{enumerate}
-\item Armado y verificación de la estructura del robot. (30 hs)
+\item Armado y verificación de la estructura del robot. (28 hs)
 	\begin{enumerate}
 	\item Construcción de las piezas. (15 hs)
 	\item Ensamblaje de piezas. (3 hs)
 	\item Verificación de la estructura. (10 hs)
 	\end{enumerate}
-\item Armado y verificación de la electrónica del robot (10 hs)
+\item Armado y verificación de la electrónica del robot. (10 hs)
 	\begin{enumerate}
-	\item Armado de la placa adaptadora entre EDU-CIAA y los distintos módulos (5 hs)
-	\item Cableado del robot (2 hs)
-	\item Verificación de la electrónica (3 hs)
+	\item Armado de la placa adaptadora entre EDU-CIAA y los distintos módulos. (5 hs)
+	\item Cableado del robot. (2 hs)
+	\item Verificación de la electrónica. (3 hs)
 	\end{enumerate}	
+\item Integración del hardware. (2 hs)	
 \item Desarrollo del software (240 hs)
 	\begin{enumerate}
 	\item Módulo PWM. (25 hs)
 	\item Módulo WIFI y protocolo de comunicaciones. (40 hs)
 	\item Módulo GPS. (25 hs)
-	\item Módulo Acelerómetro.  (25 hs)
+	\item Módulo acelerómetro.  (25 hs)
 	\item Sensores de fines de carrera. (30 hs)
-	\item Módulo de Aprendizaje por Refuerzo. (40 hs)
+	\item Módulo de aprendizaje por refuerzo. (40 hs)
 	\item Módulo PID. (25 hs)
 	\item Integración de los distintos módulos. (30 hs)
 	\end{enumerate}	
-\item Verificación del software(Testing). (75 hs)
+\item Verificación del software(\textit{Testing}). (75 hs)
 	\begin{enumerate}
 	\item Diseño de pruebas  de ensayo de los distintos módulos. (25 hs)
 	\item Diseño de las distintas pruebas de navegación. (30 hs)
 	\item Comparación de las distintas estrategias de navegación. (20 hs)
 	\end{enumerate}	
-\item Validación del sistema completo (40 hs)
+\item Validación del sistema completo. (40 hs)
 	\begin{enumerate}
-	\item Ensayos de verificación del cliente en froma parcial (20 hs)
-	\item Ensayos de validación final (20 hs)
+	\item Ensayos de verificación del cliente en forma parcial. (20 hs)
+	\item Ensayos de validación final. (20 hs)
 	\end{enumerate}	
-\item Presentación del trabajo (150 hs)
+\item Presentación del trabajo. (151 hs)
 	\begin{enumerate}
 	\item Redacción de informes de avance. (10 hs)
 	\item Redacción de manual de uso. (20 hs)
-	\item Redacción de circuitos esquemáticos. (20 hs)
+	\item Elaboración de circuitos esquemáticos. (20 hs)
 	\item Redacción de memoria del proyecto. (80 hs)
 	\item Preparación de la presentación pública del trabajo final. (20 hs)
+	\item Presentación pública del trabajo final. (1 h)
 	\end{enumerate}					
 \end{enumerate}
-
-Cantidad total de horas: (631 hs)
-
+Cantidad total de horas: (632 hs)
 %Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
 %\end{consigna}
-
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
-
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
-
+En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. Las unidades de tiempo definida en cada tarea es en horas reloj. 
 \begin{figure}[htpb]
 \centering 
 \includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
+\caption{Diagrama de \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
+\vspace{2em}
 
 
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
+\begin{table}[htbp]
+\centering
+\resizebox{0.95\textwidth}{!}{
+\begin{tabular}{|p{25em}|c|c|c|}
+\hline
+\textbf{Nombre de tarea} & \textbf{Duración} & \textbf{Comienzo}& \textbf{Fin} \\
+\hline  \textbf{Inicio} & 0 días & lun 22/6/20 & lun 22/6/20 \\
+\hline \textbf{1. Planificación de tareas} & \textbf{20 días} & textbf{lun 22/6/20} & textbf{mar 21/7/20} \\
+\hline 1.1 Generación de documento & 30 horas & lun 22/6/20 & mar 14/7/20 \\
+\hline 1.2 Aprobación y revisión & 10 horas & mié 15/7/20 &  mar 21/7/20 \\
+\hline \textbf{2. Investigación preliminar del hardware} & \textbf{12 días} & \textbf{mié 22/7/20} & \textbf{jue 6/8/20} \\
+\hline 2.1 Fabricación del Robot & 20 horas & \ mié 22/7/20 & jue 6/8/20 \\
+\hline 2.2 Placas electrónicas & 10 horas & mié 22/7/20 & mar 28/7/20 \\
+\hline 2.3 Características de motores & 4 horas & mié 29/7/20 & jue 30/7/20 \\
+\hline 2.4 Características de baterías & 4 horas & vie 31/7/20 & lun 3/8/20 \\
+\hline \textbf{3. Selección y compra de los materiales} & \textbf{4 días} & \textbf{vie 7/8/20} & \textbf{mié 12/8/20} \\
+\hline 3.1 Selección de los componentes & 5 horas & vie 7/8/20 & mar 11/8/20 \\
+\hline 3.2 Compra y adquisición & 3 horas & mar 11/8/20 & mié 12/8/20 \\
+\hline textbf{4. Armado y verificación de la estructura del robot} & \textbf{14 días} & \textbf{jue 13/8/20} & \textbf{mié 2/9/20} \\
+\hline 4.1 Construcción de las piezas & 15 horas & jue 13/8/20 & mar 25/8/20 \\
+\hline 4.2 Ensamblaje de las piezas & 3 horas & mar 25/8/20 & mié 26/8/20 \\
+\hline 4.3 Verificación de la estructura & 10 horas & jue 27/8/20 & mié 2/9/20 \\
+\hline \textbf{5. Armado y verificación de la electrónica del robot} & \textbf{5 días} & \textbf{jue 3/9/20} & \textbf{mié 9/9/20} \\
+\hline 5.1 Armado de la EDU-CIAA & 5 horas & jue 3/9/20 & lun 7/9/20 \\
+\hline 5.2 Cableado del robot & 2 horas & lun 7/9/20 & mar 8/9/20 \\
+\hline 5.3 Verificación de la electrónica & 3 horas & mar 8/9/20 & mié 9/9/20 \\
+\hline 6. Integración del hardware & 2 horas & jue 10/9/20 & jue 10/9/20 \\
+\hline \textbf{7. Desarrollo del software} & \textbf{87,5 días} & \textbf{vie 11/9/20} & \textbf{jue 21/1/21} \\
+\hline 7.1 Módulo PWM & 25 horas & vie 11/9/20 & mar 29/9/20 \\
+\hline 7.2 Módulo WIFI & 40 horas & vie 11/9/20 & jue 8/10/20 \\
+\hline 7.3 Módulo GPS & 25 horas & mar 29/9/20 & vie 16/10/20 \\
+\hline 7.4 Módulo acelerómetro & 25 horas & vie 9/10/20 & mié 28/10/20 \\
+\hline 7.5 sensores de fines de carrera & 30 horas & lun 19/10/20 & vie 6/11/20 \\
+\hline 7.6 Módulo de aprendizaje por refuerzo & 40 horas & jue 26/11/20 & mar 29/12/20 \\
+\hline 7.7 Módulo PID & 25 horas & lun 9/11/20 & jue 26/11/20 \\
+\hline 7.8 Integración de los distintos módulos & 30 horas & mar 29/12/20 & jue 21/1/21 \\
+\hline \textbf{8. Verificación del software} & \textbf{37,5 días} & \textbf{jue 21/1/21} & \textbf{lun 15/3/21} \\
+\hline 8.1 Diseño de pruebas de ensayo & 25 horas & jue 21/1/21 & lun 8/2/21 \\
+\hline 8.2 Diseño de pruebas de navegación & 30 horas & mar 9/2/21 & lun 1/3/21 \\
+\hline 8.3 Comparación de las distintas estrategias. & 20 horas & mar 2/3/21 & lun 15/3/21 \\
+\hline textbf{9. Validación del sistema empleado} & \textbf{20 días} & \textbf{mar 16/3/21} & \textbf{mié 14/4/21} \\
+\hline 9.1 Ensayos de verificación del cliente parcial & 20 horas & mar 16/3/21 & mar 30/3/21 \\
+\hline9.2 Ensayos de validación final & 20 horas & mié 31/3/21 & mié 14/4/21 \\
+\hline \textbf{10. Presentación del trabajo final} & \textbf{75,5 días} & \textbf{jue 15/4/21} & \textbf{lun 2/8/21} \\
+\hline 10.1 Redacción del informe de avance & 10 horas & jue 15/4/21 & mié 21/4/21 \\
+\hline 10.2 Redacción del manual de uso & 20 horas & jue 22/4/21 & mié 5/5/21 \\
+\hline 10.3 Elaboración de los circuitos esquemáticos & 20 horas & jue 6/5/21 & mié 19/5/21 \\
+\hline 10.4 Redacción de la memoria del proyecto & 80 horas & jue 20/5/21 & vie 16/7/21 \\
+\hline 10.5 Preparación de la presentación pública & 20 horas & lun 19/7/21 & vie 30/7/21 \\
+\hline 10.6 Presentación pública & 1 hora & lun 2/8/21 & lun 2/8/21 \\
+\hline FIN   & 0 días & lun 2/8/21 & lun 2/8/21 \\
+\hline
+\end{tabular}}
+\caption{\textit{Gantt}}
+\label{tab:CuadroGantt}
+\end{table}
 
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
+Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se obtuvieron de un software de gestión de proyectos teniendo en cuenta los días no laborables, y con una dedicación semanal de 10 horas reloj.  
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
+%\begin{consigna}{red}
+%Utilizar el software Gantter for Google Drive o alguno similar para %dibujar el diagrama de Gantt.
+%Existen muchos programas y recursos \textit{online} para hacer %diagramas de gantt, entre las cuales destacamos:
 
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
+%\begin{itemize}
+%\item Planner
+%\item GanttProject
+%\item Trello + \textit{plugins}. En el siguiente link hay un %tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-%gantt-de-un-proyecto}
+%\item Creately, herramienta online colaborativa. \\\url{https://%creately.com/diagram/example/ieb3p3ml/LaTeX}
+%\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ %\url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/%pgfgantt.pdf}
+%\end{itemize}
 
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
+%Pegar acá una captura de pantalla del diagrama de Gantt, cuidando %que la letra sea suficientemente grande como para ser legible. 
+%Si el diagrama queda demasiado ancho, se puede pegar primero la %``tabla'' del Gantt y luego pegar la parte del diagrama de barras %del diagrama de Gantt.
 
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
+%Configurar el software para que en la parte de la tabla muestre los %códigos del EDT (WBS).\\
+%Configurar el software para que al lado de cada barra muestre el %nombre de cada tarea.\\
+%Revisar que la fecha de finalización coincida con lo indicado en el %Acta Constitutiva.
 
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
+%En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de %gantt realizado con el paquete de \textit{pgfgantt}. En la %plantilla pueden ver el código que lo genera y usarlo de base para %construir el propio.
 
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+%\begin{figure}[htbp]
+%\begin{center}
+%\begin{ganttchart}{1}{12}
+%  \gantttitle{2020}{12} \\
+%  \gantttitlelist{1,...,12}{1} \\
+%  \ganttgroup{Group 1}{1}{7} \\
+%  \ganttbar{Task 1}{1}{2} \\
+%  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
+%  \ganttmilestone{Milestone o hito}{7} \ganttnewline
+%  \ganttbar{Final Task}{8}{12}
+%  \ganttlink{elem2}{elem3}
+%  \ganttlink{elem3}{elem4}
+%\end{ganttchart}
+%\end{center}
+%\caption{Diagrama de gantt de ejemplo}
+%\label{fig:gantt}
+%\end{figure}
+
+%\end{consigna}
+\newpage
+\begin{landscape}
+\begin{figure}[htpb]
+\includegraphics[width=1.6\textwidth]{./Figuras/Gantt.png}
+\caption{Diagrama de \textit{Gantt}}
+\label{fig:Gantt}
 \end{figure}
+\end{landscape}
 
-\end{consigna}
+
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
 
 
-\begin{table}[htpb]
+\begin{table}[htpb] 
 \label{tab:recursos}
 \centering
-\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|X|@{}}
+%\scalebox{1.1}[1.2]{}
+\begin{tabularx}{\linewidth}{@{}|p{1.5em}|X|c|c|c|c|c|c|@{}} 
 \hline
-\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}} & \multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}} & \multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Recursos requeridos (horas)}\\ \cline{3-8} 
+\multicolumn{1}{|c|}{\rotatebox{90} {\cellcolor[HTML]{C0A0C0} ~~Nº Tarea}}
+& \multicolumn{1}{|c|}{\multirow{-6}{*}{\cellcolor[HTML]{C0A0C0} Nombre de la tarea}}
+
+& \rotatebox{75} {\cellcolor[HTML]{A0A0C0} PC-Internet}
+ 
+& \rotatebox{75} {\cellcolor[HTML]{A0A0A0}Impresora-3D} 
+
+& \rotatebox{75} {\cellcolor[HTML]{A0A0C0} Comp.elect.} 
+
+& \rotatebox{75} {\cellcolor[HTML]{A0B0B0} Tester } 
+
+&  \rotatebox{75} {\cellcolor[HTML]{A0A0C0} Oscilosc.} 
+
+&  \rotatebox{75} {\cellcolor[HTML]{B0B0B0} Filmadora  } 
+
+\\ \hline
+
+1.& Planificación & \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{A0B0B0}&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+\\ \hline
+
+2.& Investigación  & \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0A0A0}20& \cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{A0B0B0}1&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+\\ \hline
+
+3.&Selección y Compra & \cellcolor[HTML]{A0A0C0}2&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}5&\cellcolor[HTML]{A0B0B0}&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+\\ \hline
+
+4.& Armado de la estruc.del robot  & \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0A0A0}15& \cellcolor[HTML]{A0A0C0}5&\cellcolor[HTML]{A0B0B0}1&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}1
+\\ \hline
+
+5.& Armado de placas electrónicas  & \cellcolor[HTML]{A0A0C0}5&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}10&\cellcolor[HTML]{A0B0B0}10&
+\cellcolor[HTML]{A0A0C0}2&\cellcolor[HTML]{B0B0B0}
+\\ \hline
+
+6.& Armado HW & \cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}1&\cellcolor[HTML]{A0B0B0}1&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}0,5
+\\ \hline
+
+7.& Diseño del SW  & \cellcolor[HTML]{A0A0C0}200&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}10&\cellcolor[HTML]{A0B0B0}&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+\\ \hline
+
+8.& Verificación(\textit{testing})& \cellcolor[HTML]{A0A0C0}60&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}10&\cellcolor[HTML]{A0B0B0}1&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}0,5
+\\ \hline
+
+9.& Validación  & \cellcolor[HTML]{A0A0C0}30&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}40&\cellcolor[HTML]{A0B0B0}&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}1
+\\ \hline
+
+10.& Presentación Documentación  & \cellcolor[HTML]{A0A0C0}120&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0B0B0}&
+\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}5
+\\ \hline
+\end{tabularx}
 \end{table}
+
+\vspace{40em}
 
 
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
+%\begin{consigna}{red}
+%Si el proyecto es complejo entonces separarlo en partes:
+%\begin{itemize}
+%\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
+%\item El desglose detallado del subtotal de cada una de las áreas.
+%\end{itemize}
 
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
+%IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
 
-\end{consigna}
-
+%\end{consigna}
 \begin{table}[htpb]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
+\begin{tabularx}{\linewidth}{@{}|p{1em}|X|X|X|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
+\multicolumn{5}{|c|}{\cellcolor[HTML]{C0A0C0}COSTOS DIRECTOS [\$]} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-Descripción &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+\multicolumn{2}{|c|}{Descripción} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}Cantidad} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}Valor unitario} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}Valor total} \\ \cline{1-5}
+\multirow{13}[1]{*}{\rotatebox{90}{Materiales}} & Driver doble puente H  (L298) &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{550} &
+  \multicolumn{1}{c|}{550} \\ \cline{2-5}
+& Motor CC con reducción  5v&
+   \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{310} &
+  \multicolumn{1}{c|}{620} \\ \cline{2-5}
+& Placa EDU-CIAA-NXP &
+   \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{6.500} &
+  \multicolumn{1}{c|}{6.500} \\ \cline{2-5}
+& Porta baterías (4 pilas AA) &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{290} \\ \cline{2-5}
+&  Baterias de Li-ion 1500 mah&
+   \multicolumn{1}{c|}{4} &
+  \multicolumn{1}{c|}{250} &
+  \multicolumn{1}{c|}{1.000} \\ \cline{2-5}
+& Pulsador NA &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{100} &
+  \multicolumn{1}{c|}{100} \\ \cline{2-5}
+& Placa  WIFI(ESP1 8266)&
+   \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{500} &
+  \multicolumn{1}{c|}{500} \\ \cline{2-5} 
+&  Placa acelerómetro (Mpu-9250)&
+   \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{790} &
+  \multicolumn{1}{c|}{790} \\ \cline{2-5}
+&  Cables varios &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{260} \\ \cline{2-5}
+&  Conectores varios &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{560} \\ \cline{2-5}
+&  Placa experimental 10x10 cm &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{350} &
+  \multicolumn{1}{c|}{350} \\ \cline{2-5}
+&  Estaño 60/40 0,8mm 3m&
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{250} &
+  \multicolumn{1}{c|}{250} \\ \cline{2-5} 
+&  Filamento 1.75mm (PLA) &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{1.000} &
+  \multicolumn{1}{c|}{1000} \\ \cline{2-5}    
+&  Ruedas &
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{130} &
+  \multicolumn{1}{c|}{260} \\ \cline{1-5} 
+\multicolumn{4}{|c|}{Mano de obra} &
+  \multicolumn{1}{c|}{150.000} \\ \hline
+  
+\multicolumn{4}{|c|}{SUBTOTAL} &
+  \multicolumn{1}{c|}{163.030} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
+\multicolumn{5}{|c|}{\cellcolor[HTML]{C0A0C0}COSTOS INDIRECTOS [\$]} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-Descripción &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
-\rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
-\end{tabularx}%
+\multicolumn{4}{|c|}{Descripción} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}Valor total} \\ \hline
+\multicolumn{4}{|c|}{30\% de los costos directos} &
+  \multicolumn{1}{c|}{48.909} \\ \hline
+  
+\multicolumn{4}{|c|}{SUBTOTAL [\$]} &
+  \multicolumn{1}{c|}{48.909} \\ \hline
+\multicolumn{4}{|c|}{\cellcolor[HTML]{B0B0B0}TOTAL [\$]} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}211.939} \\ \hline   
+\end{tabularx}
+\caption{Presupuesto}
+\label{tab:Presupuesto}
 \end{table}
 
 
+Aclaración: el presupuesto de la cuadro \ref{tab:Presupuesto} se realizó con fecha 25/07/2020 con una cotización del dólar estadounidense de \$120.
+
+\vspace{40em}
+
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
-
-\begin{table}[htpb]
+\begin{table}[htbp]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
+%\resizebox{.9\textwidth}{!}{
+\begin{tabularx}{\textwidth}{@{}|c|p{11em}|p{5.8em}|p{4.8em}|p{6em}|X|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0C0C0} &
-  \cellcolor[HTML]{C0C0C0} &
-  \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Listar todos los nombres y roles del proyecto} \\ \cline{3-6} 
-\rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0C0C0} &
-  \cellcolor[HTML]{C0C0C0} &
-  Responsable &
-  Orientador &
-  Equipo &
-  Cliente \\ \cline{3-6} 
-\rowcolor[HTML]{C0C0C0} 
-\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
-  \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
-  \authorname &
-  \supname &
-  Nombre de alguien &
-  \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabular}%
-}
+\cellcolor[HTML]{C0A0C0}\begin{tabular}{cc} \rotatebox{90}{Nº} &   \rotatebox{90}{Tarea} \end{tabular} 
+&
+\cellcolor[HTML]{C0A0C0}\begin{tabular}{ccc} & \rotatebox{45}{Nombre de la tarea}& \end{tabular} 
+&
+\cellcolor[HTML]{C0A0C0}\begin{tabular}{rc} \rotatebox{90}{\textbf{Responsable}} & \rotatebox{90}{\authorname} \end{tabular} 
+&
+\cellcolor[HTML]{C0A0C0}\begin{tabular}{rc} \rotatebox{90}{\textbf{Director}} & \rotatebox{90}{\supname} \end{tabular} 
+& 
+\cellcolor[HTML]{C0A0C0}\begin{tabular}{rc} \rotatebox{90}{\textbf{Cliente}} & \rotatebox{90}{\clientename} \end{tabular}  
+& 
+\cellcolor[HTML]{C0A0C0}\begin{tabular}{c} \rotatebox{90}{} \\ \rotatebox{90}{\textbf{~~Jurado}} \end{tabular} \\
+
+\hline \rowcolor[gray]{.8}
+1.1 & Generación Documentación & \multicolumn{1}{c|}{P} & \multicolumn{1}{c|}{C} & &  \\
+\hline 
+1.2 & Aprobación y revisión del documento &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{A}& \multicolumn{1}{c|}{A} &\multicolumn{1}{c|}{I} \\
+\hline \rowcolor[gray]{.8}
+2. & Investigación HW &\multicolumn{1}{c|}{P} & \multicolumn{1}{c|}{C} &   &  \\
+\hline
+3. & Selección y compra &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{I} &\multicolumn{1}{c|}{A} &  \\
+\hline \rowcolor[gray]{.8}
+4., 5.y 6. & Armado del HW &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{I}  &   &  \\
+\hline
+7. & Desarrollo del SW &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{C} & & \\
+\hline \rowcolor[gray]{.8}
+8. & \textit{Testing} &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{S} &\multicolumn{1}{c|}{I} &\multicolumn{1}{c|}{I}\\
+\hline
+9. &  Validación &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{A} &\multicolumn{1}{c|}{A} &\multicolumn{1}{c|}{I} \\
+\hline \rowcolor[gray]{.8}
+10.1 & Redacción informe &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{A} &  &\multicolumn{1}{c|}{I} \\
+\hline
+10.2 & Redacción del manual &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{I} &   &  \\
+\hline \rowcolor[gray]{.8}
+10.3 & Elaboración de circuitos esquemáticos &\multicolumn{1}{c|}{P} &   &   & \\
+\hline
+10.4 & Redacción de la memoria &\multicolumn{1}{c|}{P}  &\multicolumn{1}{c|}{A} &   &\multicolumn{1}{c|}{I} \\
+\hline \rowcolor[gray]{.8}
+10.5 & Preparación de la presentación &\multicolumn{1}{c|}{P}  &\multicolumn{1}{c|}{A} &  &\multicolumn{1}{c|}{I} \\
+\hline
+10.6 & Presentación pública &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{I} &  & \multicolumn{1}{c|}{A} \\
+\hline 
+\end{tabularx}%}
+\caption{Matriz de asignaciones de responsabilidades}
+\label{tab:addlabel}
 \end{table}
 
 {\footnotesize
@@ -623,12 +783,48 @@ Referencias:
 \end{itemize}
 } %footnotesize
 
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
 
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
+%\begin{consigna}{red}
+%Establecer la matriz de asignación de responsabilidades y el manejo %de la autoridad completando la siguiente tabla:
 
-\end{consigna}
+%\begin{table}[htpb]
+%\centering
+%\resizebox{\textwidth}{!}{
+%\begin{tabular}{|c|c|c|c|c|c|}
+%\hline \rowcolor[HTML]{C0C0C0} \cellcolor[HTML]{C0C0C0} &
+%  \cellcolor[HTML]{C0C0C0} &\multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0} Listar todos los nombres y roles del proyecto} \\ \cline{3-6} 
+%\rowcolor[HTML]{C0C0C0} 
+%\cellcolor[HTML]{C0C0C0} &
+%  \cellcolor[HTML]{C0C0C0} &
+%  Responsable &
+%  Orientador &
+%  Equipo &
+%  Cliente \\ \cline{3-6} 
+%\rowcolor[HTML]{C0C0C0} 
+%\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
+%  \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
+%  \authorname &
+%  \supname &
+%  Nombre de alguien &
+%  \clientename \\ \hline
+% &  &  &  &  &  \\ \hline
+% &  &  &  &  &  \\ \hline
+% &  &  &  &  &  \\ \hline
+%\end{tabular}%
+%}
+%\end{table}
+
+
+
+%Una de las columnas debe ser para el Director, ya que se supone que %participará en el proyecto.
+%A su vez se debe cuidar que no queden muchas tareas seguidas sin %``A'' o ``I''.
+
+%Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
+
+%\end{consigna}
+
+
+\vspace{40em}
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
