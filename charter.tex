@@ -41,6 +41,9 @@
 \usepackage{graphicx}
 \usepackage{rotating}
 \usepackage{multirow}
+\usepackage{longtable}
+
+
 
 \begin{document}
 
@@ -65,11 +68,25 @@
 \centering
 \begin{tabularx}{\linewidth}{@{}|c|X|c|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha \\ 
-\hline 1.0      & Creación del documento                                          & 27/06/2020 \\
-\hline 1.1 & Primera versión, hasta el punto 6 del documento.                                            & 10/07/2020 \\
-\hline 1.2 & Segunda versión del documento, se corrigen errores hasta el punto 6 y se entrega hasta el ítem 11 & 31/07/2020 \\ 
+\rowcolor[HTML]{C0A0C0} 
+Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0A0C0}Detalles de los cambios realizados} & Fecha \\ 
+\hline 
+1.0      &
+\begin{tabular}{c} Creación del documento \end{tabular}&
+ 27/06/2020 \\
+\hline 
+1.1 	& 
+\begin{tabular}{c}Primera versión, hasta el punto 6 del documento.                                           \end{tabular} & 
+10/07/2020 \\
+\hline 
+1.2 	& 
+\begin{tabular}{c}Segunda versión del documento, se corrigen errores hasta el  \\
+punto 6 y se entrega hasta el ítem 11\end{tabular} &
+ 31/07/2020 \\ 
+\hline
+1.3 & \begin{tabular}{c} Se agregó en la sección 4 los requerimientos de documentación. \\
+Se modificaron valores en la tabla de la sección 11.\\
+Se entrega hasta el ítem 17. \end{tabular} & 07/08/2020 \\ 
 \hline
 \end{tabularx}
 \end{table}
@@ -158,7 +175,7 @@ Se pretende diseñar un Sistema Embebido para desplazar un pequeño robot de 20x
 
 \vspace{25px}
 
-El cerebro del sistema será una placa EDU-CIAA-NPX, que recibirá la información de los distintos sensores y controlará los actuadores. Los motores serán controlados por un puente H (driver) mediante pulsos de PWM (modulación de ancho de pulso). La placa recibirá información de comunicación por un módulo WIFI (del tipo Esp8266), y de un módulo GPS. En lo posible, también se instalará un acelerómetro para usarlo en la lógica del algoritmo de AR.
+El cerebro del sistema será una placa EDU-CIAA-NPX, que recibirá la información de los distintos sensores y controlará los actuadores. Los motores serán controlados por un puente H (driver) mediante pulsos de PWM (modulación de ancho de pulso). La placa recibirá información de comunicación por un módulo WIFI (del tipo ESP8266), y de un módulo GPS. En lo posible, también se instalará un acelerómetro para usarlo en la lógica del algoritmo de AR.
 El sistema será alimentado por un \textit{pack} de baterías, que serán seleccionadas en función del consumo/autonomía y peso del robot.
 Además, para poder comparar el sistema de control embebido en la placa principal, se instalará un control PID (Proporcional, Integral y Derivativo), sintonizado a las condiciones estándares de funcionamiento del sistema.
 El robot estará diseñado para moverse en espacios interiores (\textit{indoor}), en un suelo plano y liso, en condiciones de temperaturas estándares entre 5 ºC y 40 ºC, y humedad relativa normales(entre 40 \% y 70 \%). 
@@ -188,7 +205,7 @@ El robot estará diseñado para moverse en espacios interiores (\textit{indoor})
 %\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
+\rowcolor[HTML]{C0A0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 %Auspiciante   & -  				& -					& -	   		\\ \hline
 Cliente       & \clientename    &\empclientename	& -   		\\ \hline
@@ -258,7 +275,7 @@ El proyecto no incluye:
 \item Realizar pruebas de estructuras de hardware, para saber la vida útil del sistema.
 \item Diseñar una interface gráfica amigable para cambiar los distintos modos de funcionamiento.
 \item Diseñar y/o armar el cargador de baterías.
-\item Carcasa, ni gabinete.
+\item Carcasa, ni gabinete para el robot.
 \end{itemize}
 
 
@@ -309,7 +326,15 @@ Se supone para el siguiente proyecto que:
 \item Requerimientos no funcionales
 	\begin{enumerate}
 	\item La estructura del robot no debe tener bordes filosos ni punzantes, que puedan ocasionar lesiones. 
-	\item La velocidad que desarrolla el robot debe inferior a 1 m/seg.
+	\item La velocidad que desarrolla el robot debe ser inferior a 1 m/seg.
+	\end{enumerate}
+\item Requerimientos documentación
+	\begin{enumerate}
+	\item Redactar el manual de uso. 
+	\item Redactar un documento en donde se registre el código 
+	fuente.
+	\item Redactar un documento técnico que figuren los circuitos
+	esquemáticos, y el armado de la plataforma.
 	\end{enumerate}
 \end{enumerate}
 
@@ -327,6 +352,17 @@ Se supone para el siguiente proyecto que:
 %\end{itemize}
 
 %\end{consigna}
+
+
+\section{Historias de usuarios (\textit{Product backlog})}
+\label{sec:backlog}
+
+\begin{consigna}{red}
+Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+\end{consigna}
+
+\vspace{40mm}
+
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
@@ -415,6 +451,9 @@ Al final del proyecto se entregará:
 Cantidad total de horas: (632 hs)
 %Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
 %\end{consigna}
+
+\vspace{80mm}
+
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. Las unidades de tiempo definida en cada tarea es en horas reloj. 
@@ -424,7 +463,8 @@ En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. Las uni
 \caption{Diagrama de \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
-\vspace{2em}
+
+\vspace{80mm}
 
 
 \section{8. Diagrama de Gantt}
@@ -721,6 +761,7 @@ Aclaración: el presupuesto de la cuadro \ref{tab:Presupuesto} se realizó con f
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
+\renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
 \begin{table}[htbp]
 \centering
 %\resizebox{.9\textwidth}{!}{
@@ -757,9 +798,9 @@ Aclaración: el presupuesto de la cuadro \ref{tab:Presupuesto} se realizó con f
 \hline \rowcolor[gray]{.8}
 10.1 & Redacción informe &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{A} &  &\multicolumn{1}{c|}{I} \\
 \hline
-10.2 & Redacción del manual &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{I} &   &  \\
+10.2 & Redacción del manual &\multicolumn{1}{c|}{P} &\multicolumn{1}{c|}{A} &   &  \\
 \hline \rowcolor[gray]{.8}
-10.3 & Elaboración de circuitos esquemáticos &\multicolumn{1}{c|}{P} &   &   & \\
+10.3 & Elaboración de circuitos esquemáticos &\multicolumn{1}{c|}{P} &  \multicolumn{1}{c|}{I} &   & \\
 \hline
 10.4 & Redacción de la memoria &\multicolumn{1}{c|}{P}  &\multicolumn{1}{c|}{A} &   &\multicolumn{1}{c|}{I} \\
 \hline \rowcolor[gray]{.8}
@@ -829,171 +870,921 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos)
-\begin{itemize}
-\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de severidad (S).
-\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de (O). 
-\end{itemize}   
+a) Identificación de los riesgos: 
+\renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
+\begin{table}[htpb]
+\centering
+\resizebox{.97\textwidth}{!}{
+\begin{tabularx}{\textwidth}{@{}|c|p{3em}|m{4em}|c|X|@{}}
+\hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}Nro.} &
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}Descripción del riesgo} &
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}\begin{tabular}{m{4em}}Severidad \\ Ocurrencia \end{tabular} } &
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}Valor}&
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0} Justificación}\\ \hline
 
-Riesgo 2:
-\begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
-\end{itemize}
+\multirow{2}{*}{1}  							&
+	\multirow{2}{*}{\begin{tabular}{c}
+	Pérdida/Destrucción \\
+	del kit de desarrollo \end{tabular}}		&
+	Severidad 									&
+	10											&
+	EL daño en el kit de desarrollo impacta en 
+	numerosas etapas del desarrollo de este 
+	proyecto.  \\ \cline{3-5}
+	& &
+	Ocurrencia 									&
+	5											&
+	La posibilidad que esto suceda es moderada, ya 
+	que el kit se montará en una plataforma móvil.
+	\\ \hline
+\multirow{2}{*}{2}  							&
+	\multirow{2}{*}{\begin{tabular}{c}
+	Destrucción del \\
+	driver de motor \\
+	(L298) \end{tabular}}		&
+	Severidad 									&
+	7											&
+	EL daño en el driver atrasaría algunas tareas,
+	pero otras  podrían continuar.  \\ \cline{3-5}
+	& &
+	Ocurrencia 									&
+	6											&
+	Si el motor se bloquea, por el driver puede 
+	circular mucha corriente y se puede quemar.
+	\\ \hline
 
-Riesgo 3:
-\begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
-\end{itemize}
+\multirow{2}{*}{3}  							&
+	\multirow{2}{*}{\begin{tabular}{c}
+	Falta de tiempo  \\
+	para adquirir los \\
+	conocimientos \\
+	para implementar el \\software de	AR. 
+	\end{tabular}}								&
+	Severidad 									&
+	6											&
+	El algoritmo se está probando en otra plataforma
+	pero de características muy distintas.  \\ \cline{3-5}
+	& &
+	Ocurrencia 									&
+	3											&
+	La probabilidad es baja, ya que se puede adaptar
+	distintos niveles de complejidad.
+	\\ \hline
 
+\multirow{2}{*}{4}  							&
+	\multirow{2}{*}{\begin{tabular}{c}
+	Daños en la \\ 
+	impresora 3D.  \end{tabular}}				&
+	Severidad 									&
+	6											&
+	Se usa para fabricar las piezas del robot en
+	un etapa temprana el proyecto. \\ \cline{3-5}
+	& &
+	Ocurrencia 									&
+	7											&
+	La probabilidad es alta, ya que su funcionamiento depende
+	de muchos factores (que los inyectores no se tapen, que las
+	tensiones de las correas sean las correctas, que no se
+	quemen los drivers de los motores, que el firmware
+	no se dañe, etc ).	\\ \hline
+	
+\multirow{2}{*}{5}  							&
+	\multirow{2}{*}{\begin{tabular}{c}
+	Capacidad o poten-\\
+	cia  del pack de bate-\\
+	ría insuficiente para\\
+	cumplir con los reque-\\
+	rimientos planteados\\
+	\end{tabular}}								&
+	Severidad 									&
+	6											&
+	Se usan baterías Li-ion, algunos consumos pueden
+	ser vitales para el éxito del proyecto. \\ \cline{3-5}
+	& &
+	Ocurrencia 									&
+	7											&
+	La probabilidad es alta, no se tiene experiencia en el 
+	manejo de este tipo de batería.	\\ \hline	
+	
+\multirow{2}{*}{6}  							&
+	\multirow{2}{*}{\begin{tabular}{c}
+	Daño en la computa-\\ 
+	dora que se usa para \\
+ 	programar y docu- \\
+	mentar el proyecto.
+	\end{tabular}}								&
+	Severidad 									&
+	7											&
+	Se usa para el diseño de las piezas del robot,
+	programar los algoritmos en la placa EDU-CIAA,
+	y la documentación del proyecto. \\ \cline{3-5}
+	& &
+	Ocurrencia 									&
+	5											&
+	No es una computadora moderna, su probabilidad de falla es 
+	considerable.	\\ \hline	
+	
+\end{tabularx}
+}
+\caption{Gestión de riesgos}
+\label{tab:GestionRiesgos}
+\end{table}
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+La ``severidad'' y la ``probabilidad de ocurrencia'' se califican de 1 a 10, siendo el número más alto correspondiente a la mayor severidad o la mayor probabilidad.
+\vspace{5em}
+
+%\begin{consigna}{red}
+%a) Identificación de los riesgos (al menos cinco) y estimación %de sus consecuencias: 
+%Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre %altera los planes previstos)
+%\begin{itemize}
+%\item Severidad (S): mientras más severo, más alto es el número %(usar números del 1 al 10).\\
+%Justificar el motivo por el cual se asigna determinado número de %severidad (S).
+%\item Probabilidad de ocurrencia (O): mientras más probable, más %alto es el número (usar del 1 al 10).\\
+%Justificar el motivo por el cual se asigna determinado número de %(O). 
+%\end{itemize}   
+
+%Riesgo 2:
+%\begin{itemize}
+%\item Severidad (S): 
+%\item Ocurrencia (O):
+%\end{itemize}
+
+%Riesgo 3:
+%\begin{itemize}
+%\item Severidad (S): 
+%\item Ocurrencia (O):
+%\end{itemize}
+
+b) Tabla de gestión de riesgos: (El RPN se calcula como \%RPN=SxO)
 
 \begin{table}[htpb]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
+\begin{tabular}{@{}|c|c|c|c|c|c|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-\end{tabularx}%
+\cellcolor[HTML]{C0A0C0}Nº de Riesgo & \cellcolor[HTML]{C0A0C0}S & \cellcolor[HTML]{C0A0C0}O & \cellcolor[HTML]{C0A0C0}RPN & \cellcolor[HTML]{C0A0C0}S* & \cellcolor[HTML]{C0A0C0}O* & \cellcolor[HTML]{C0A0C0}RPN* \\ \hline
+ 1	& 10 & 5 & \cellcolor{red} 50 & 5 & 5 & \cellcolor{green}25     \\ \hline
+ 2	&  7 & 6 & \cellcolor{red}42 & 3 & 5 & \cellcolor{green}15     \\ \hline
+ 3	&  6 & 3 & \cellcolor{green}18 &    &    &      \\ \hline
+ 4	&  6 & 7 & \cellcolor{red}42 & 6 & 3 & \cellcolor{green}18     \\ \hline
+ 5  &  6 & 7 & \cellcolor{red}42 & 3 & 5 & \cellcolor{green}15     \\ \hline
+ 6  &  7 & 5 & \cellcolor{green}35 &    &    &      \\ \hline
+\end{tabular}%
+\caption{RPN}
+\label{tab:RPN}
 \end{table}
 
-Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a ....
+\textbf{Criterio adoptado}: se tomarán medidas de mitigación de los riesgos cuyos RPN sean mayores a 40.
 
-Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
+\textbf{Aclaración}: en la tabla \ref{tab:RPN} los valores marcados con (*) corresponden luego de haber aplicado el plan de mitigación de riesgos.
+
+%\begin{consigna}{red}
+%b) Tabla de gestión de riesgos:      (El RPN se calcula como %RPN=SxO)
+
+%\begin{table}[htpb]
+%\centering
+%\begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
+%\hline
+%\rowcolor[HTML]{C0C0C0} 
+%Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
+%       &   &   &     &    &    &      \\ \hline
+%       &   &   &     &    &    &      \\ \hline
+%       &   &   &     &    &    &      \\ \hline
+%       &   &   &     &    &    &      \\ \hline
+%       &   &   &     &    &    &      \\ \hline
+%\end{tabularx}%
+%\end{table}
+
+%Criterio adoptado: 
+%Se tomarán medidas de mitigación en los riesgos cuyos números de %RPN sean mayores a ....
+
+%Nota: los valores marcados con (*) en la tabla corresponden %luego de haber aplicado la mitigación.
+
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+\begin{itemize}
+\item Riesgo 1: Pérdida/Destrucción	del kit de desarrollo.
+	Medidas de mitigación: Para minimizar este riesgo se prevee un apartida presupuestaria para comprar otra placa en caso de que sea necesario. Se habla con el proveedor y asegura tener \textit{stock} para los próximos meses y un plazo de entrega no mayor a 24 horas.
+	\begin{itemize}
+	\item Severidad(S): 5 Disminuye la severidad, algunas tareas pueden tener un retraso no significativo. 
+	\item  Probabilidad de ocurrencia(O): 5 La probabilidad de ocurrencia no cambia debido al escaso conocimiento de la placa EDU-CIAA-NPX. 
+	\end{itemize}
+\item Riesgo 2:  Falta de tiempo para adquirir los conocimientos
+para implementar el software de AR.
+	Medidas de mitigación: El firmware de la placa en un primer prototipo puede salir con una versión acotada, al proyecto estaría aprobado por el cliente con el módulo del PID clásico y una de las técnicas de aprendizaje por refuerzo. Se puede recurrir al asesoramiento de expertos en el tema.
+	\begin{itemize}
+	\item Severidad(S): 3 La severidad disminuye considerablemente, se tiene la posibilidad de tener otras fuentes de información.
+	\item  Probabilidad de ocurrencia(O): 5 Probabilidad de ocurrencia media, hay que ver la disponibilidad de los horarios de los expertos en el tema para ver si pueden atender nuestras consultas.  
+	\end{itemize} 
+\item Riesgo 4: Daños en la	impresora 3D.
+	Medidas de mitigación: Se debe tener en \textit{stock} los repuestos necesarios para reemplazar en caso de ser necesarios. Los repuestos como la boquilla fusora, y las correas dentadas no son caras y se consiguen en el mercado.
+	\begin{itemize}
+	\item Severidad(S): 6 La severidad no cambia, la impresión de las piezas es un punto critico.
+	\item  Probabilidad de ocurrencia(O): 3 Disminuye considerablemente, ya que al tener los repuestos se puede prevenir que no deje de funcionar. Hay algunos repuestos como la placa de control que son difíciles de conseguir, en tal caso hay que recurrir a otro tipo de estrategia de mitigación
+	\end{itemize}
+\item Riesgo 5: Capacidad o potencia del pack de batería	insuficiente para cumplir con los requerimientos planteados.
+	Medidas de mitigación: Se debe diseñar el pack de batería para tener la posibilidad o de ampliar la capacidad de \textit{mAh} de las baterías de \textit{Li-ion}, o cambiarlas por otra tecnología como de \textit{NiCd} o \textit{NiMH}. Por tal motivo en el diseño se adoptó el uso de baterías de formato AA o 14500.
+	\begin{itemize}
+	\item Severidad(S): 3 Disminuye considerablemente al tener varias alternativas.
+	\item  Probabilidad de ocurrencia(O): 5 La probabilidad de ocurrencia es media, ya que de algunas baterías se carece del conocimiento de funcionamiento detallado. 
+	\end{itemize}
+\end{itemize}
 
-Riesgo 2: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+
+
+%Riesgo 1: Plan de mitigación (si por el RPN fuera necesario %elaborar un plan de mitigación).
+%  Nueva asignación de S y O, con su respectiva justificación:
+%  - Severidad (S): mientras más severo, más alto es el número (usar %números del 1 al 10).
+%          Justificar el motivo por el cual se asigna determinado %número de severidad (S).
+%  - Probabilidad de ocurrencia (O): mientras más probable, más alto %es el número (usar del 1 al 10).
+%          Justificar el motivo por el cual se asigna determinado %número de (O).
+
+%Riesgo 2: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
  
-Riesgo 3: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación)
+%Riesgo 3: Plan de mitigación (si por el RPN fuera necesario %elaborar un plan de mitigación)
 
-\end{consigna}
+%\end{consigna}
 
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
-\begin{itemize} 
-\item Req \#1: Copiar acá el requerimiento.
+%------------------------------------------------------------------
+%\begin{consigna}{red}
+%Para cada uno de los requerimientos del proyecto indique:
+%\begin{itemize} 
+%\item Req \#1: Copiar acá el requerimiento.
 
-Verificación y validación:
+%Verificación y validación:
+
+%\begin{itemize}
+%\item Verificación para confirmar si se cumplió con lo requerido %antes de mostrar el sistema al cliente:\\
+%Detallar 
+%\item Validación con el cliente para confirmar que está de acuerdo %en que se cumplió con lo requerido:\\
+%Detallar  
+%\end{itemize}
+
+%\end{itemize}
+
+%Tener en cuenta que en este contexto se pueden mencionar %simulaciones, cálculos, revisión de hojas de datos, consulta con %expertos, etc.
+%\end{consigna}
+%----------------------------------------------------------%\renewcommand\labelitemi{$\clubsuit$}
+
+1. Requerimientos de funcionamiento general.
+\begin{itemize} 
+\item Req \#1.1: El sistema debe tener una autonomía de por lo menos 10 minutos. 
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se verifican los consumos de todas las placas del sistema 				mediante las hojas de datos y mediciones empíricas. Se hacen los 	cálculos de consumos y se registra la autonomía del robot en 			condiciones normales de funcionamiento. Con la batería al 100\%
+	 de carga, se hace mover al robot en distintas direcciones y se
+	 registra en cuánto tiempo tarda hasta que no pueda responder a
+	  los comandos enviados.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Con la baterìa completa se hará mover al robot en círculos, en 			una superficie plana durante el lapso de 10 minutos para validad 	este requerimiento.
+	\end{itemize}
+\end{itemize}	
+\end{itemize}
+
+\begin{itemize} 
+\item Req \#1.2: Se debe comunicar en forma inalámbrica.
+\begin{itemize} 
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se verificarán las hojas de datos del módulo inalámbrico, 
+	distancia de comunicación, velocidad de comunicación, potencia
+	de transmisión, etc. Se verificarán si se hace el	
+	\textit{``chequeo de verificación de trama''} mandando tramas no
+	validas o con errores de secuencia, el robot la descarte.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Mediante una prueba empírica se le envía comandos de movimiento
+	al robot (hacia adelante, hacia atrás, giro a la derecha e
+	izquierda), para demostrar que la plataforma móvil responde.
+\end{itemize}
+	
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req \#1.3: Debe ser un robot pequeño de dimensiones(no mayor a 25x20x15 cm).
+\begin{itemize} 
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se realiza las mediciones del robot.  
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Mediante un cubo de dimensiones de 25x25x15 cm con uno de los
+	lados de la base abierta, se hace entrar al robot para validar
+	este requerimiento.  
+	\end{itemize}
+\end{itemize}
+\end{itemize}
 
 \begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Detallar 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Detallar  
+\item Req \#1.4: Debe ser un robot liviano (no mayor a 1,25 Kg).
+\begin{itemize} 
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Mediante las hojas de datos o en forma práctica, se elaborará un
+	documento en donde se registren los pesos de cada componente. Se
+	verificará que la suma total de los componentes no supere los
+	1,25 Kg.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Mediante una balanza se pesa la plataforma móvil para validar
+	este requerimiento.  
+	\end{itemize}
+\end{itemize}
 \end{itemize}
 
+2. Grupo de requerimientos asociados con el hardware.
+
+\begin{itemize}
+\item Req \#2.1: El hardware debe ser fácilmente replicable, utilizando una impresora 3D.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se verifican que todos los elementos estructurales del
+ 	robot puedan realizarse por una impresora 3D con un solo 
+ 	extrusor, eso significa que no se necesite por ejemplo de
+ 	material de soporte	especiales, que las dimensiones sean
+ 	menores que una cama de impresión estándar (20x20 cm), 
+ 	que el filamento sea fácil de conseguir (PLA o ABS), etc.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se muestran los planos de donde se obtuvieron las impresiones de 
+	los componentes  que conforman la plataforma.    
+	\end{itemize}
+\end{itemize}
 \end{itemize}
 
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, etc.
+\begin{itemize}
+\item Req \#2.2: Debe poseer la menor cantidad de piezas posibles, no mayor a diez. utilizando una impresora 3D.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se hace un listado detallado de todos los componentes
+	estructurales del hardware y se verifican que la cantidad sea 
+	menor a la del requerimiento.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se muestra al cliente el listado detallado elaborado en la
+	 prueba de verificación. 
+	\end{itemize}
+\end{itemize}
+\end{itemize}
 
-\end{consigna}
+\begin{itemize}
+\item Req \#2.3: El cuerpo del robot debe albergar todo el hardware (motores, placa EDU-CIAA, drivers de motores, baterías, etc.) necesario para el funcionamiento normal.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Mediante planos se verifica que todos los elementos
+	estructurales del robot, las distintas placas, los motores, y
+	sensores se encuentran autocontenidos.  
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se demuestra al cliente empíricamente se cumple este requisito.
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Req \#2.4: Debe poseer un botón de parada de emergencia de fácil acceso, para interrumpir el funcionamiento del robot en caso de urgencia.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se depura el programa  y verifica que sin importar en que
+	secuencia de programa se encuentre el software, al pulsar el
+	botón se invoca la rutina de parada.  
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se hace funcionar al robot en una  trayectoria circular, y se
+	verifica que cuando se presiona el botón de parada cumple este
+	requerimiento.  
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+3. Grupo de requerimientos asociados con el software.
+
+\begin{itemize}
+\item Req \#3.1: Se programará usando Lenguaje C, utilizando el modelo de capas y las sAPI del proyecto CIAA.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se analizarán las hojas de datos de la placa EDU-CIAA  y se
+	verificará que usando un ambiente de programación en Lenguaje C
+	se pueda programar la placa. Se controlará que todo el código
+	fuente utilizado para programar al producto final esté escrito
+	en Lenguaje C y con llamadas a las sAPI.
+	Se generará un documento en donde se registren todas las rutinas
+	que conforman el proyecto. 
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se presentará el informe del listado del código fuente con las
+	rutinas que conforman el proyecto.   
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Req \#3.2: La herramienta de programación en Lenguaje C deberá poseer un modo DEBUG.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se verificará de las hojas de datos de la placa de desarrollo
+	que posea un puerto serie extra, o algún otro método que permita tener información de depuración. 
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se configurará el prototipo para que envíe información de depuración a través de algún medio de comunicación con el cliente.
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Req \#3.3: El uso de memoria no debe exceder a la placa EDU-CIAA-NXP.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se analizará las hojas de datos de la placa de control y de su
+	microprocesador para que con el código generado en el proyecto cumpla con este requerimiento.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se compilará y  un programa de prueba en la placa de
+ 	desarrollo para validar el requerimiento.
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+4. Requerimientos no funcionales
+
+\begin{itemize}
+\item Req \#4.1: La estructura del robot no debe tener bordes filosos ni punzantes, que puedan ocasionar lesiones. 
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se verificará con los planos estructurales de las piezas del
+	robot, que todos los bordes externos si terminan en una arista,
+	no sean ángulos inferiores a 90 grados, o que sean redondeados
+	con un diámetro mayor a 0,5 mm. Se generará un informe
+	detallando.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se presentará el informe generado en la validación, constatando  
+	físicamente con el robot.
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Req \#4.2: La velocidad que desarrolla el robot debe ser inferior a 1 m/seg. 
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+ 	Con las hojas de datos del motor (máxima \textit{rpm}) y el
+ 	diámetro de la rueda se calculará la velocidad máxima del robot.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	Se medirá la velocidad que alcanza el robot a máxima carga de
+	batería con un método indirecto. Se pondrán a 5 metros de
+	distancia en línea recta dos marcas en un piso plano y liso. El
+	robot se pondrá en posición de reposo a un metro atrás de la
+	primera marca y se acelerará a máxima velocidad. Se medirá el
+	tiempo en que tarda en cruzar las dos marcas, calculando así su
+	velocidad máxima.   
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+
+5. Requerimientos de documentación
+
+\begin{itemize}
+\item Req \#5.1: Redactar manual de uso. 
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se irá controlando la generación parcial de este documento
+	técnico.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	El director del proyecto validará este documento.  
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Req \#5.2: Redactar un documento en donde se registre el código fuente. 
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se irá controlando la generación parcial de documentación
+	técnica, para que sirva de referencia para la posterior
+	escritura de la memoria.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	El director y los jurados leerán esta información en la memoria
+	técnica y la validarán.
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Req \#5.3: Redactar un documento técnico que figuren los circuitos esquemáticos, y el armado de la plataforma.
+\begin{itemize}
+\item Verificación y validación:
+	\begin{itemize}
+	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
+	Se irá controlando la generación parcial de documentación
+	técnica, para que sirva de referencia para la posterior
+	escritura de la memoria.
+	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
+	El director y los jurados leerán esta información en la memoria
+	técnica y la validarán.   
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+%\vspace{1mm}
+\clearpage
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
 
-\begin{consigna}{red}
-El plan de comunicación del proyecto es el siguiente:
-\end{consigna}
+%\begin{consigna}{red}
+%El plan de comunicación del proyecto es el siguiente:
+%\end{consigna}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+
+\renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
 \begin{table}[htpb]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
-\rowcolor[HTML]{C0C0C0} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Plan de comunicación del proyecto}           \\ \hline
+\rowcolor[HTML]{C0A0C0} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-\end{tabular}%
+Definición de los objetivos y los alcances &
+Director &  Evaluación & Inicio del proyecto & Correo electrónico                     &\authorname          \\ \hline
+                
+Inicio de las tareas de implementación &
+Director  &  Informar & Inicio de implementación  &   Correo electrónico                    
+&\authorname         \\ \hline
+                
+Grado de avance & Director & Informar y evaluar & Al término de cada tarea &  Correo electrónico &\authorname         \\ \hline
+                
+Problemas que puedan afectar los tiempos de entrega &  Director Cliente & Informar & Cuando surjan  & Correo electrónico                      &\authorname        \\ \hline
+                
+Finalización y cierre &  Director   Jurados & Evaluación & Final del proyecto &  Correo electrónico   	
+&\authorname     \\ \hline
+\end{tabularx}
 }
 \end{table}
+
+\vspace{20mm}
 
 \section{15. Gestión de Compras}
 \label{sec:compras}
 
-\begin{consigna}{red}
-En caso de tener que comprar elementos o contratar servicios:
-a) Explique con qué criterios elegiría a un proveedor.
-b) Redacte el Statement of Work correspondiente.
-\end{consigna}
+%\begin{consigna}{red}
+%En caso de tener que comprar elementos o contratar servicios:
+%a) Explique con qué criterios elegiría a un proveedor.
+%b) Redacte el Statement of Work correspondiente.
+%\end{consigna}
+\underline{Criterio de selección de proveedores:}
+
+Tanto para la compra de componentes electrónicos  como de filamentos PLA para la confección del robot, se seleccionarán aquellos proveedores del mercado nacional que dispongan de \textit{stock} suficiente de los componentes requeridos, presenten una cotización menor, entreguen a domicilio, y que los tiempos de entrega sean dentro de las 24 hrs. Dado que los componentes a utilizar pueden ser adquiridos por varios proveedores, se descarta un análisis de los mismos.
+
+\vspace{200mm}
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
 
-\begin{consigna}{red}
-Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
+%\begin{consigna}{red}
+%Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
+%
+%El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
+%
+%\end{consigna}
+%
+%\begin{table}[!htpb]
+%\centering
+%\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
+%\hline
+%\rowcolor[HTML]{C0C0C0} 
+%\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
+%\rowcolor[HTML]{C0C0C0} 
+%Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
+% &  &  &  &  &  \\ \hline
+% &  &  &  &  &  \\ \hline
+% &  &  &  &  &  \\ \hline
+% &  &  &  &  &  \\ \hline
+% &  &  &  &  &  \\ \hline
+%\end{tabularx}%
+%%}
+%\end{table}
 
-El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
-
-\end{consigna}
-
-\begin{table}[!htpb]
+\renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
+\begin{table}[htpb]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
+\resizebox{\textwidth}{!}{%
+\begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
-%}
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Seguimiento de avance}           \\ \hline
+\rowcolor[HTML]{C0A0C0} 
+Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
+
+1.1 &
+\% de Versiones de planificación de proyecto &
+Semanal &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c}Patricio Bos\\Ariel\\Lutenberg \end{tabular} &
+Correo Electrónico          		\\ \hline
+                
+1.2 &
+\% de Aprobación del documento de planificación &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c}Patricio Bos\\Ariel\\Lutenberg \end{tabular} &
+Correo Electrónico          		\\ \hline
+
+2.1 &
+\% de Inv.  en la fabricación del motor &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline
+ 
+2.2 &
+\% de Inv. placas electrónicas &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline   
+
+2.3 &
+\% de Inv. de motores &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline   
+
+2.4 &
+\% de Inv. de baterías &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+3.1 &
+\% de Selección de componentes &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+
+3.2 &
+\% de Compra de componentes &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+
+4.1 &
+\% de Construcc. de la piezas &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+
+4.2 &
+\% de Ensamblaje de piezas &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+4.3 &
+\% de Verificación de la estructura &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+ 
+\end{tabularx}
+}
 \end{table}
+
+%\vspace{10mm}
+% Segunda parte de la Tabla
+
+\begin{table}[htpb]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Seguimiento de avance}           \\ \hline
+\rowcolor[HTML]{C0A0C0} 
+Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
+
+5.1 &
+\% de Armado de placa adap. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+
+5.2 &
+\% de Cableado del robot. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+
+5.3 &
+\% de Verif. de la electrónica. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline  
+
+6. &
+\% de Integración del HW. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.1 &
+\% de SW del PWM. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.2 &
+\% de SW de comunicación. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.3 &
+\% de SW del GPS. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.4 &
+\% de SW del acelerómetro. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.6 &
+\% de SW de AR. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.7 &
+\% de SW de PID. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+7.8 &
+\% de Integración de los SW. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+8 &
+\% de Verificación. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+9 &
+\% de Validación. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+10.1 &
+\% de Redacción de informe de avance. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c}Director\\Jurado \end{tabular} &
+Correo Electrónico          		\\ \hline
+
+\end{tabularx}
+}
+\end{table}
+
+% Tercera parte de la Tabla
+
+\begin{table}[htpb]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Seguimiento de avance}           \\ \hline
+\rowcolor[HTML]{C0A0C0} 
+Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
+
+
+10.2 &
+\% de Redacción del manual de uso. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline
+
+10.3 &
+\% de Elaboración de circuitos esquemáticos. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline 
+
+10.4 &
+\% de Redacción de memoria. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c}Director\\Jurado \end{tabular} &
+Correo Electrónico          		\\ \hline
+
+10.5 &
+\% de Preparación de la presentación. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c} Director\end{tabular}&
+Correo Electrónico          		\\ \hline
+
+10.6 &
+\% de Presentación pública. &
+Unifica vez &
+\begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
+\begin{tabular}{c}Director\\Jurado \end{tabular} &
+Correo Electrónico          		\\ \hline
+
+\end{tabularx}
+}
+\end{table}
+
+
+\vspace{40mm}
+
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
+%\begin{consigna}{red}
 Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
 
 \begin{itemize}
-\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-  - Indicar esto y quién financiará los gastos correspondientes.
+\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:\\
+Encargado:Pablo Daniel Folino
+	\begin{itemize}
+	\item Se avaluarán los requerimientos y los objetivos alcanzados frente a los planteados en el plan original.
+	\item Se pondrá especial interés si se cumplieron los lineamientos en cuanto tiempos de entrega y ejecución.
+	\end{itemize}	
+\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:\\
+Encargado:Pablo Daniel Folino
+	\begin{itemize}
+	\item Se establecerá cual fue la mejor combinación de algoritmos de aprendizaje por refuerzo que llevaron mejor la tarea.
+	\item Se identificarán el uso de nuevas herramientas o procedimientos en caso de corresponder.
+	\end{itemize}
+\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:\\
+Encargado:Pablo Daniel Folino
+	\begin{itemize}
+	\item Luego de la presentación del proyecto mediante la defensa pública , se procederá a agradecer a todas las personas que participaron del desarrollo del proyecto, al director del proyecto, a los compañeros y a las autoridades del CESE.
+	\end{itemize}
 \end{itemize}
 
-\end{consigna}
+%\end{consigna}
 
 
 \end{document}
