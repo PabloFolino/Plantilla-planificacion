@@ -37,11 +37,12 @@
 \fechaFINALTrabajo{02 de agosto de 2021}		%Fecha de defensa pública del trabajo final
 
 %Instalación de paquetes de LaTex
-\usepackage{lscape}
-\usepackage{graphicx}
-\usepackage{rotating}
-\usepackage{multirow}
-\usepackage{longtable}
+%\usepackage{lscape}
+\usepackage{pdflscape}
+%\usepackage{graphicx}
+%\usepackage{rotating}
+%\usepackage{multirow}
+%\usepackage{longtable}
 
 
 
@@ -58,6 +59,9 @@
 }
 \pagebreak
 
+\renewcommand{\tablename}{Tabla}
+
+
 
 \section{Registros de cambios}
 \label{sec:registro}
@@ -68,8 +72,8 @@
 \centering
 \begin{tabularx}{\linewidth}{@{}|c|X|c|@{}}
 \hline
-\rowcolor[HTML]{C0A0C0} 
-Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0A0C0}Detalles de los cambios realizados} & Fecha \\ 
+\rowcolor[HTML]{CCFFFF} 
+Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{CCFFFF}Detalles de los cambios realizados} & Fecha \\ 
 \hline 
 1.0      &
 \begin{tabular}{c} Creación del documento \end{tabular}&
@@ -88,6 +92,9 @@ punto 6 y se entrega hasta el ítem 11\end{tabular} &
 Se modificaron valores en la tabla de la sección 11.\\
 Se entrega hasta el ítem 17. \end{tabular} & 07/08/2020 \\ 
 \hline
+1.4 & \begin{tabular}{c} Se agrega información de  historias de 
+usuarios en la sección 4 \\ Se corrige todo el documento en general. \end{tabular} & 10/08/2020 \\ 
+\hline
 \end{tabularx}
 \end{table}
 
@@ -104,7 +111,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo preliminar de un sistema robótico capaz de aprender a moverse en línea recta, hacia adelante y atrás, y tendrá un presupuesto preliminar estimado de 632 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo preliminar de un sistema robótico capaz de aprender a moverse en línea recta, hacia adelante y atrás, y tendrá un presupuesto preliminar estimado de 632 hs de trabajo y \$211.939, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -205,7 +212,7 @@ El robot estará diseñado para moverse en espacios interiores (\textit{indoor})
 %\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
 \hline
-\rowcolor[HTML]{C0A0C0} 
+\rowcolor[HTML]{CCFFFF} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 %Auspiciante   & -  				& -					& -	   		\\ \hline
 Cliente       & \clientename    &\empclientename	& -   		\\ \hline
@@ -312,7 +319,7 @@ Se supone para el siguiente proyecto que:
 	\end{enumerate}
 \item Grupo de requerimientos asociados con el hardware
 	\begin{enumerate}
-	\item El hardware debe ser fácilmente replicable, utilizando una impresora 3D.
+	\item El hardware debe ser fácilmente replicable utilizando una impresora 3D.
 	\item Debe poseer la menor cantidad de piezas posibles, no mayor a diez. 
 	\item El cuerpo del robot debe albergar todo el hardware (motores, placa EDU-CIAA, drivers de motores, baterías, etc.) necesario para el funcionamiento normal.
 	\item Debe poseer un botón de parada de emergencia de fácil acceso, para interrumpir el funcionamiento del robot en caso de urgencia.
@@ -357,12 +364,41 @@ Se supone para el siguiente proyecto que:
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
-\end{consigna}
+%\begin{consigna}{red}
+%Descripción: En esta sección se deben incluir las historias de %usuarios y su ponderación (\textit{history points}). Recordar que %las historias de usuarios son descripciones cortas y simples de una %característica contada desde la perspectiva de la persona que desea %la nueva capacidad, generalmente un usuario o cliente del sistema. %La ponderación es un número entero que representa el tamaño de la %historia comparada con otras historias de similar tipo.
+%\end{consigna}
 
-\vspace{40mm}
+Criterio: a mayor valor de prioridad, la historia de usuario es más importante. Para el grado de ponderación se toma el criterio horas-hombre (valor de esfuerzo) que supone la implementación de la historia de usuario.
 
+\begin{itemize}
+\item Historia de usuario 1: Como docente quiero que el robot se pueda conectar a una red local, para poder controlarlo desde una posición remota.
+	\begin{itemize}
+	\item Prioridad : 1
+	\item Ponderación : 5
+	\end{itemize}
+\item Historia de usuario 2: Como alumno quiero poder cambiar las constantes del controlador PID (proporcional, integral y derivativo), para poder sintonizar los movimientos de la plataforma móvil. 
+	\begin{itemize}
+	\item Prioridad : 2
+	\item Ponderación : 5
+	\end{itemize}	
+\item Historia de usuario 3:  Como alumno quiero tener una aplicación  gráfica en un dispositivo móvil, para poder manejar los movimientos del robot mediante \textit{wifi} o \textit{bluetooth}. 
+	\begin{itemize}
+	\item Prioridad : 3
+	\item Ponderación : 7
+	\end{itemize}
+\item Historia de usuario 4: Como ayudante de laboratorio encargado del robot quiero que se pueda reparar rápidamente, para no perder tiempo. 
+	\begin{itemize}
+	\item Prioridad : 4
+	\item Ponderación : 3
+	\end{itemize}	
+\item Historia de usuario 5: Como docente quiero poder cambiar las baterías del robot en forma rápida, para no cortar la experiencia en el laboratorio/aula,  así los alumnos no pierden el hilo de la explicación .
+	\begin{itemize}
+	\item Prioridad : 5
+	\item Ponderación : 1
+	\end{itemize}		
+\end{itemize}
+
+%\vspace{10mm}
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
@@ -452,19 +488,20 @@ Cantidad total de horas: (632 hs)
 %Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
 %\end{consigna}
 
-\vspace{80mm}
+%\vspace{80mm}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
-En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. Las unidades de tiempo definida en cada tarea es en horas reloj. 
+En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. La unidad de tiempo definida en cada tarea es en hora.
+ 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+\includegraphics[width=\textwidth]{./Figuras/AoN.png}
 \caption{Diagrama de \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
 
-\vspace{80mm}
+%\vspace{80mm}
 
 
 \section{8. Diagrama de Gantt}
@@ -476,7 +513,7 @@ En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. Las uni
 \hline
 \textbf{Nombre de tarea} & \textbf{Duración} & \textbf{Comienzo}& \textbf{Fin} \\
 \hline  \textbf{Inicio} & 0 días & lun 22/6/20 & lun 22/6/20 \\
-\hline \textbf{1. Planificación de tareas} & \textbf{20 días} & textbf{lun 22/6/20} & textbf{mar 21/7/20} \\
+\hline \textbf{1. Planificación de tareas} & \textbf{20 días} & \textbf{lun 22/6/20} & \textbf{mar 21/7/20} \\
 \hline 1.1 Generación de documento & 30 horas & lun 22/6/20 & mar 14/7/20 \\
 \hline 1.2 Aprobación y revisión & 10 horas & mié 15/7/20 &  mar 21/7/20 \\
 \hline \textbf{2. Investigación preliminar del hardware} & \textbf{12 días} & \textbf{mié 22/7/20} & \textbf{jue 6/8/20} \\
@@ -522,11 +559,11 @@ En la figura \ref{fig:AoN}, se observa el camino crítico en color rojo. Las uni
 \hline FIN   & 0 días & lun 2/8/21 & lun 2/8/21 \\
 \hline
 \end{tabular}}
-\caption{\textit{Gantt}}
+\caption{Inicio y fin de cada tarea}
 \label{tab:CuadroGantt}
 \end{table}
 
-Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se obtuvieron de un software de gestión de proyectos teniendo en cuenta los días no laborables, y con una dedicación semanal de 10 horas reloj.  
+Los datos de la tabla \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se obtuvieron de un software de gestión de proyectos teniendo en cuenta los días no laborables, y con una dedicación semanal de 10 horas reloj.  
 
 %\begin{consigna}{red}
 %Utilizar el software Gantter for Google Drive o alguno similar para %dibujar el diagrama de Gantt.
@@ -586,70 +623,71 @@ Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se o
 \begin{table}[htpb] 
 \label{tab:recursos}
 \centering
-%\scalebox{1.1}[1.2]{}
+\scalebox{1}[.9]{
 \begin{tabularx}{\linewidth}{@{}|p{1.5em}|X|c|c|c|c|c|c|@{}} 
 \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}} & \multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}} & \multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Recursos requeridos (horas)}\\ \cline{3-8} 
-\multicolumn{1}{|c|}{\rotatebox{90} {\cellcolor[HTML]{C0A0C0} ~~Nº Tarea}}
-& \multicolumn{1}{|c|}{\multirow{-6}{*}{\cellcolor[HTML]{C0A0C0} Nombre de la tarea}}
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF}} & \multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF}} & \multicolumn{6}{|c|}{\cellcolor[HTML]{CCFFFF}Recursos requeridos (horas)}\\ \cline{3-8} 
+\multicolumn{1}{|c|}{\rotatebox{90} {\cellcolor[HTML]{CCFFFF} ~~Nº Tarea}}
+& \multicolumn{1}{|c|}{\multirow{-6}{*}{\cellcolor[HTML]{CCFFFF} Nombre de la tarea}}
 
-& \rotatebox{75} {\cellcolor[HTML]{A0A0C0} PC-Internet}
+& \rotatebox{75} {\cellcolor[HTML]{EFF7FF} PC-Internet}
  
-& \rotatebox{75} {\cellcolor[HTML]{A0A0A0}Impresora-3D} 
+& \rotatebox{75} {\cellcolor[HTML]{F5F3D7}Impresora-3D} 
 
-& \rotatebox{75} {\cellcolor[HTML]{A0A0C0} Comp.elect.} 
+& \rotatebox{75} {\cellcolor[HTML]{FFFFDD} Comp.elect.} 
 
-& \rotatebox{75} {\cellcolor[HTML]{A0B0B0} Tester } 
+& \rotatebox{75} {\cellcolor[HTML]{EFF7FF} Tester } 
 
-&  \rotatebox{75} {\cellcolor[HTML]{A0A0C0} Oscilosc.} 
+&  \rotatebox{75} {\cellcolor[HTML]{F5F3D7} Oscilosc.} 
 
-&  \rotatebox{75} {\cellcolor[HTML]{B0B0B0} Filmadora  } 
+&  \rotatebox{75} {\cellcolor[HTML]{FFFFDD} Filmadora  } 
 
 \\ \hline
 
-1.& Planificación & \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{A0B0B0}&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+1.& Planificación & \cellcolor[HTML]{EFF7FF}20&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}&\cellcolor[HTML]{EFF7FF}&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}
 \\ \hline
 
-2.& Investigación  & \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0A0A0}20& \cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{A0B0B0}1&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+2.& Investigación  & \cellcolor[HTML]{EFF7FF}20&\cellcolor[HTML]{F5F3D7}20& \cellcolor[HTML]{FFFFDD}&\cellcolor[HTML]{EFF7FF}1&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}
 \\ \hline
 
-3.&Selección y Compra & \cellcolor[HTML]{A0A0C0}2&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}5&\cellcolor[HTML]{A0B0B0}&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+3.&Selección y compra & \cellcolor[HTML]{EFF7FF}2&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}5&\cellcolor[HTML]{EFF7FF}&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}
 \\ \hline
 
-4.& Armado de la estruc.del robot  & \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0A0A0}15& \cellcolor[HTML]{A0A0C0}5&\cellcolor[HTML]{A0B0B0}1&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}1
+4.& Armado de la estruc.del robot  & \cellcolor[HTML]{EFF7FF}20&\cellcolor[HTML]{F5F3D7}15& \cellcolor[HTML]{FFFFDD}5&\cellcolor[HTML]{EFF7FF}1&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}1
 \\ \hline
 
-5.& Armado de placas electrónicas  & \cellcolor[HTML]{A0A0C0}5&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}10&\cellcolor[HTML]{A0B0B0}10&
-\cellcolor[HTML]{A0A0C0}2&\cellcolor[HTML]{B0B0B0}
+5.& Armado de placas electrónicas  & \cellcolor[HTML]{EFF7FF}5&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}10&\cellcolor[HTML]{EFF7FF}10&
+\cellcolor[HTML]{F5F3D7}2&\cellcolor[HTML]{FFFFDD}
 \\ \hline
 
-6.& Armado HW & \cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}1&\cellcolor[HTML]{A0B0B0}1&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}0,5
+6.& Armado HW & \cellcolor[HTML]{EFF7FF}&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}1&\cellcolor[HTML]{EFF7FF}1&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}0,5
 \\ \hline
 
-7.& Diseño del SW  & \cellcolor[HTML]{A0A0C0}200&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}10&\cellcolor[HTML]{A0B0B0}&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}
+7.& Diseño del SW  & \cellcolor[HTML]{EFF7FF}200&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}10&\cellcolor[HTML]{EFF7FF}&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}
 \\ \hline
 
-8.& Verificación(\textit{testing})& \cellcolor[HTML]{A0A0C0}60&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}10&\cellcolor[HTML]{A0B0B0}1&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}0,5
+8.& Verificación(\textit{testing})& \cellcolor[HTML]{EFF7FF}60&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}10&\cellcolor[HTML]{EFF7FF}1&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}0,5
 \\ \hline
 
-9.& Validación  & \cellcolor[HTML]{A0A0C0}30&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}40&\cellcolor[HTML]{A0B0B0}&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}1
+9.& Validación  & \cellcolor[HTML]{EFF7FF}30&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}40&\cellcolor[HTML]{EFF7FF}&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}1
 \\ \hline
 
-10.& Presentación Documentación  & \cellcolor[HTML]{A0A0C0}120&\cellcolor[HTML]{A0A0A0}& \cellcolor[HTML]{A0A0C0}20&\cellcolor[HTML]{A0B0B0}&
-\cellcolor[HTML]{A0A0C0}&\cellcolor[HTML]{B0B0B0}5
+10.& Presentación y documentación  & \cellcolor[HTML]{EFF7FF}120&\cellcolor[HTML]{F5F3D7}& \cellcolor[HTML]{FFFFDD}20&\cellcolor[HTML]{EFF7FF}&
+\cellcolor[HTML]{F5F3D7}&\cellcolor[HTML]{FFFFDD}5
 \\ \hline
 \end{tabularx}
+}
 \end{table}
 
-\vspace{40em}
+%\vspace{40em}
 
 
 \section{10. Presupuesto detallado del proyecto}
@@ -667,10 +705,11 @@ Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se o
 %\end{consigna}
 \begin{table}[htpb]
 \centering
+\scalebox{1}[.9]{
 \begin{tabularx}{\linewidth}{@{}|p{1em}|X|X|X|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{5}{|c|}{\cellcolor[HTML]{C0A0C0}COSTOS DIRECTOS [\$]} \\ \hline
+\multicolumn{5}{|c|}{\cellcolor[HTML]{CCFFFF}COSTOS DIRECTOS [\$]} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{2}{|c|}{Descripción} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}Cantidad} &
@@ -692,7 +731,7 @@ Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se o
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{290} \\ \cline{2-5}
-&  Baterias de Li-ion 1500 mah&
+&  Materias de Li-ion 1500 mah&
    \multicolumn{1}{c|}{4} &
   \multicolumn{1}{c|}{250} &
   \multicolumn{1}{c|}{1.000} \\ \cline{2-5}
@@ -724,7 +763,7 @@ Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se o
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{250} &
   \multicolumn{1}{c|}{250} \\ \cline{2-5} 
-&  Filamento 1.75mm (PLA) &
+&  Filamento 1,75 mm (PLA) &
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{1.000} &
   \multicolumn{1}{c|}{1000} \\ \cline{2-5}    
@@ -738,7 +777,7 @@ Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se o
 \multicolumn{4}{|c|}{SUBTOTAL} &
   \multicolumn{1}{c|}{163.030} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{5}{|c|}{\cellcolor[HTML]{C0A0C0}COSTOS INDIRECTOS [\$]} \\ \hline
+\multicolumn{5}{|c|}{\cellcolor[HTML]{CCFFFF}COSTOS INDIRECTOS [\$]} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{Descripción} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}Valor total} \\ \hline
@@ -750,12 +789,13 @@ Los datos de la cuadro \ref{tab:CuadroGantt} y de la figura \ref{fig:Gantt} se o
 \multicolumn{4}{|c|}{\cellcolor[HTML]{B0B0B0}TOTAL [\$]} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{B0B0B0}211.939} \\ \hline   
 \end{tabularx}
+}
 \caption{Presupuesto}
 \label{tab:Presupuesto}
 \end{table}
 
 
-Aclaración: el presupuesto de la cuadro \ref{tab:Presupuesto} se realizó con fecha 25/07/2020 con una cotización del dólar estadounidense de \$120.
+Aclaración: el presupuesto de la tabla \ref{tab:Presupuesto} se realizó con fecha 25/07/2020 en pesos argentinos (\$). La  cotización es de \$120 por dólar estadounidense (u\$s). El costo total es \$211.939 o su equivalente en u\$s1.766,16.
 
 \vspace{40em}
 
@@ -765,19 +805,19 @@ Aclaración: el presupuesto de la cuadro \ref{tab:Presupuesto} se realizó con f
 \begin{table}[htbp]
 \centering
 %\resizebox{.9\textwidth}{!}{
-\begin{tabularx}{\textwidth}{@{}|c|p{11em}|p{5.8em}|p{4.8em}|p{6em}|X|@{}}
+\begin{tabularx}{\textwidth}{@{}|p{3em}|p{11em}|X|X|X|X|@{}}
 \hline
-\cellcolor[HTML]{C0A0C0}\begin{tabular}{cc} \rotatebox{90}{Nº} &   \rotatebox{90}{Tarea} \end{tabular} 
+\cellcolor[HTML]{CCFFFF}\begin{tabular}{c} Nº\\Tarea \end{tabular} 
 &
-\cellcolor[HTML]{C0A0C0}\begin{tabular}{ccc} & \rotatebox{45}{Nombre de la tarea}& \end{tabular} 
+\cellcolor[HTML]{CCFFFF}\begin{tabular}{c} Nombre de la tarea\end{tabular} 
 &
-\cellcolor[HTML]{C0A0C0}\begin{tabular}{rc} \rotatebox{90}{\textbf{Responsable}} & \rotatebox{90}{\authorname} \end{tabular} 
+\cellcolor[HTML]{CCFFFF}\textbf{Responble} \authorname 
 &
-\cellcolor[HTML]{C0A0C0}\begin{tabular}{rc} \rotatebox{90}{\textbf{Director}} & \rotatebox{90}{\supname} \end{tabular} 
+\cellcolor[HTML]{CCFFFF}\textbf{Director} \supname  
 & 
-\cellcolor[HTML]{C0A0C0}\begin{tabular}{rc} \rotatebox{90}{\textbf{Cliente}} & \rotatebox{90}{\clientename} \end{tabular}  
+\cellcolor[HTML]{CCFFFF}\textbf{Cliente} \clientename 
 & 
-\cellcolor[HTML]{C0A0C0}\begin{tabular}{c} \rotatebox{90}{} \\ \rotatebox{90}{\textbf{~~Jurado}} \end{tabular} \\
+\cellcolor[HTML]{CCFFFF}\textbf{Jurado} \\
 
 \hline \rowcolor[gray]{.8}
 1.1 & Generación Documentación & \multicolumn{1}{c|}{P} & \multicolumn{1}{c|}{C} & &  \\
@@ -874,14 +914,14 @@ a) Identificación de los riesgos:
 \renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
 \begin{table}[htpb]
 \centering
-\resizebox{.97\textwidth}{!}{
+\scalebox{1}[.9]{
 \begin{tabularx}{\textwidth}{@{}|c|p{3em}|m{4em}|c|X|@{}}
 \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}Nro.} &
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}Descripción del riesgo} &
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}\begin{tabular}{m{4em}}Severidad \\ Ocurrencia \end{tabular} } &
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0}Valor}&
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0A0C0} Justificación}\\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF}Nro.} &
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF}Descripción del riesgo} &
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF}\begin{tabular}{m{4em}}Severidad \\ Ocurrencia \end{tabular} } &
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF}Valor}&
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCFFFF} Justificación}\\ \hline
 
 \multirow{2}{*}{1}  							&
 	\multirow{2}{*}{\begin{tabular}{c}
@@ -889,13 +929,15 @@ a) Identificación de los riesgos:
 	del kit de desarrollo \end{tabular}}		&
 	Severidad 									&
 	10											&
-	EL daño en el kit de desarrollo impacta en 
+	El daño en el kit de desarrollo modifica en 
 	numerosas etapas del desarrollo de este 
-	proyecto.  \\ \cline{3-5}
+	proyecto. Como por ejemplo no poder probar
+	el software, no terminar de construir el
+	prototipo, etc. \\ \cline{3-5}
 	& &
 	Ocurrencia 									&
 	5											&
-	La posibilidad que esto suceda es moderada, ya 
+	La posibilidad de que suceda es moderada, ya 
 	que el kit se montará en una plataforma móvil.
 	\\ \hline
 \multirow{2}{*}{2}  							&
@@ -905,7 +947,7 @@ a) Identificación de los riesgos:
 	(L298) \end{tabular}}		&
 	Severidad 									&
 	7											&
-	EL daño en el driver atrasaría algunas tareas,
+	El daño en el driver atrasaría algunas tareas,
 	pero otras  podrían continuar.  \\ \cline{3-5}
 	& &
 	Ocurrencia 									&
@@ -983,7 +1025,7 @@ a) Identificación de los riesgos:
 	Ocurrencia 									&
 	5											&
 	No es una computadora moderna, su probabilidad de falla es 
-	considerable.	\\ \hline	
+	moderada.	\\ \hline	
 	
 \end{tabularx}
 }
@@ -1022,8 +1064,8 @@ b) Tabla de gestión de riesgos: (El RPN se calcula como \%RPN=SxO)
 \centering
 \begin{tabular}{@{}|c|c|c|c|c|c|c|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0A0C0}Nº de Riesgo & \cellcolor[HTML]{C0A0C0}S & \cellcolor[HTML]{C0A0C0}O & \cellcolor[HTML]{C0A0C0}RPN & \cellcolor[HTML]{C0A0C0}S* & \cellcolor[HTML]{C0A0C0}O* & \cellcolor[HTML]{C0A0C0}RPN* \\ \hline
+\rowcolor[HTML]{CCFFFF} 
+\cellcolor[HTML]{CCFFFF}Nº de Riesgo & \cellcolor[HTML]{CCFFFF}S & \cellcolor[HTML]{CCFFFF}O & \cellcolor[HTML]{CCFFFF}RPN & \cellcolor[HTML]{CCFFFF}S* & \cellcolor[HTML]{CCFFFF}O* & \cellcolor[HTML]{CCFFFF}RPN* \\ \hline
  1	& 10 & 5 & \cellcolor{red} 50 & 5 & 5 & \cellcolor{green}25     \\ \hline
  2	&  7 & 6 & \cellcolor{red}42 & 3 & 5 & \cellcolor{green}15     \\ \hline
  3	&  6 & 3 & \cellcolor{green}18 &    &    &      \\ \hline
@@ -1066,10 +1108,10 @@ c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo
  
 \begin{itemize}
 \item Riesgo 1: Pérdida/Destrucción	del kit de desarrollo.
-	Medidas de mitigación: Para minimizar este riesgo se prevee un apartida presupuestaria para comprar otra placa en caso de que sea necesario. Se habla con el proveedor y asegura tener \textit{stock} para los próximos meses y un plazo de entrega no mayor a 24 horas.
+	Medidas de mitigación: Para minimizar este riesgo se prevee una partida presupuestaria para comprar otra placa en caso de que sea necesario. Se habla con el proveedor y asegura tener \textit{stock} para los próximos meses y un plazo de entrega no mayor a 24 horas.
 	\begin{itemize}
 	\item Severidad(S): 5 Disminuye la severidad, algunas tareas pueden tener un retraso no significativo. 
-	\item  Probabilidad de ocurrencia(O): 5 La probabilidad de ocurrencia no cambia debido al escaso conocimiento de la placa EDU-CIAA-NPX. 
+	\item  Probabilidad de ocurrencia(O): 5 La probabilidad de ocurrencia no cambia debido al escaso conocimiento de la placa tipo EDU-CIAA-NPX. 
 	\end{itemize}
 \item Riesgo 2:  Falta de tiempo para adquirir los conocimientos
 para implementar el software de AR.
@@ -1144,7 +1186,7 @@ para implementar el software de AR.
 	 registra en cuánto tiempo tarda hasta que no pueda responder a
 	  los comandos enviados.
 	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
-	Con la baterìa completa se hará mover al robot en círculos, en 			una superficie plana durante el lapso de 10 minutos para validad 	este requerimiento.
+	Con la batería completa se hará mover al robot en círculos, en 			una superficie plana durante el lapso de 10 minutos para validad 	este requerimiento.
 	\end{itemize}
 \end{itemize}	
 \end{itemize}
@@ -1157,9 +1199,9 @@ para implementar el software de AR.
 	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
 	Se verificarán las hojas de datos del módulo inalámbrico, 
 	distancia de comunicación, velocidad de comunicación, potencia
-	de transmisión, etc. Se verificarán si se hace el	
-	\textit{``chequeo de verificación de trama''} mandando tramas no
-	validas o con errores de secuencia, el robot la descarte.
+	de transmisión, etc. Se verificará con el depurador de programa
+	(\textit{debugger}) que al mandar tramas no válidas o con errores 
+	de secuencia, el robot no las ejecute.
 	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
 	Mediante una prueba empírica se le envía comandos de movimiento
 	al robot (hacia adelante, hacia atrás, giro a la derecha e
@@ -1170,12 +1212,12 @@ para implementar el software de AR.
 \end{itemize}
 
 \begin{itemize} 
-\item Req \#1.3: Debe ser un robot pequeño de dimensiones(no mayor a 25x20x15 cm).
+\item Req \#1.3: Debe ser un robot pequeño de dimensiones (no mayor a 25x20x15 cm).
 \begin{itemize} 
 \item Verificación y validación:
 	\begin{itemize}
 	\item Verificación para confirmar si se cumplió con lo requerido 	antes de mostrar el sistema al cliente:\\
-	Se realiza las mediciones del robot.  
+	Se realiza las mediciones del tamaño del robot.  
 	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
 	Mediante un cubo de dimensiones de 25x25x15 cm con uno de los
 	lados de la base abierta, se hace entrar al robot para validar
@@ -1204,7 +1246,7 @@ para implementar el software de AR.
 2. Grupo de requerimientos asociados con el hardware.
 
 \begin{itemize}
-\item Req \#2.1: El hardware debe ser fácilmente replicable, utilizando una impresora 3D.
+\item Req \#2.1: El hardware debe ser fácilmente replicable utilizando una impresora 3D.
 \begin{itemize}
 \item Verificación y validación:
 	\begin{itemize}
@@ -1336,7 +1378,7 @@ para implementar el software de AR.
 	detallando.
 	\item Validación con el cliente para confirmar que está de 				acuerdo en que se cumplió con lo requerido:\\
 	Se presentará el informe generado en la validación, constatando  
-	físicamente con el robot.
+	físicamente las terminaciones de los bordes externos del robot.
 	\end{itemize}
 \end{itemize}
 \end{itemize}
@@ -1431,9 +1473,9 @@ para implementar el software de AR.
 \resizebox{\textwidth}{!}{%
 \begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Plan de comunicación del proyecto}           \\ \hline
-\rowcolor[HTML]{C0A0C0} 
+\rowcolor[HTML]{CCFFFF} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{CCFFFF}Plan de comunicación del proyecto}           \\ \hline
+\rowcolor[HTML]{CCFFFF} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
 Definición de los objetivos y los alcances &
 Director &  Evaluación & Inicio del proyecto & Correo electrónico                     &\authorname          \\ \hline
@@ -1452,7 +1494,6 @@ Finalización y cierre &  Director   Jurados & Evaluación & Final del proyecto 
 }
 \end{table}
 
-\vspace{20mm}
 
 \section{15. Gestión de Compras}
 \label{sec:compras}
@@ -1465,8 +1506,46 @@ Finalización y cierre &  Director   Jurados & Evaluación & Final del proyecto 
 \underline{Criterio de selección de proveedores:}
 
 Tanto para la compra de componentes electrónicos  como de filamentos PLA para la confección del robot, se seleccionarán aquellos proveedores del mercado nacional que dispongan de \textit{stock} suficiente de los componentes requeridos, presenten una cotización menor, entreguen a domicilio, y que los tiempos de entrega sean dentro de las 24 hrs. Dado que los componentes a utilizar pueden ser adquiridos por varios proveedores, se descarta un análisis de los mismos.
+Algunos posible proveedores podrían ser:
 
-\vspace{200mm}
+\renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
+\begin{table}[htpb]
+\centering
+\scalebox{1}[.8]{
+\begin{tabularx}{\textwidth}{@{}|p{3em}|X|X|X|c|X|@{}}
+\hline
+\rowcolor[HTML]{CCFFFF} 
+Nº & Nombre & Dirección & Teléfono & Página WEB & Productos \\ \hline
+             
+1 &
+ITPROUSER S.A. &
+A. Magaldi 2102, CABA &
+3961-2000 &
+www.itprouser.com.ar&
+Insumo y repuestos de impresoras 3D \\ \hline
+2 &
+Candy-Ho &
+Méjico 341, Villa Martelli &
+3968-5940 &
+www.candy-ho.com&
+Insumo y repuestos de componentes electrónicas\\ \hline
+3 &
+Cyber Ofice &
+Av. A. Alcorta 2186, CABA &
+15-3288-6803 &
+www.cyberofice.com.ar&
+Insumo y repuestos de componentes electrónicas\\ \hline
+4 &
+REMAKERS &
+Alsina 1761, CABA &
+4372-9492 &
+www.emakers.com.ar&
+Insumo y repuestos de componentes electrónicas\\ \hline
+               
+\end{tabularx}
+}
+\end{table}
+
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
@@ -1498,90 +1577,91 @@ Tanto para la compra de componentes electrónicos  como de filamentos PLA para l
 \renewcommand{\tabularxcolumn}[1]{>{\arraybackslash}m{#1}}
 \begin{table}[htpb]
 \centering
-\resizebox{\textwidth}{!}{%
+\scalebox{1}[.9]{
 \begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Seguimiento de avance}           \\ \hline
-\rowcolor[HTML]{C0A0C0} 
+\rowcolor[HTML]{CCFFFF} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{CCFFFF}Seguimiento de avance}           \\ \hline
+\rowcolor[HTML]{CCFFFF} 
 Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
 
 1.1 &
-\% de Versiones de planificación de proyecto &
+\% de versiones de planificación de proyecto &
 Semanal &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c}Patricio Bos\\Ariel\\Lutenberg \end{tabular} &
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
                 
 1.2 &
-\% de Aprobación del documento de planificación &
+\% de aprobación del documento de planificación &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c}Patricio Bos\\Ariel\\Lutenberg \end{tabular} &
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
 
 2.1 &
-\% de Inv.  en la fabricación del motor &
+\% de investigación en la fabricación del motor &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
  
 2.2 &
-\% de Inv. placas electrónicas &
+\% de investigación placas electrónicas &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline   
+Correo electrónico          		\\ \hline   
 
 2.3 &
-\% de Inv. de motores &
+\% de investigación de motores &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline   
+Correo electrónico          		\\ \hline   
 
 2.4 &
-\% de Inv. de baterías &
+\% de investigación de baterías &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 3.1 &
-\% de Selección de componentes &
+\% de selección de componentes &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
 
 3.2 &
-\% de Compra de componentes &
+\% de compra de componentes &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
 
 4.1 &
-\% de Construcc. de la piezas &
+\% de construcc. de la piezas &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
 
 4.2 &
-\% de Ensamblaje de piezas &
+\% de ensamblaje de piezas &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 4.3 &
-\% de Verificación de la estructura &
+\% de verificación de la estructura &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
+
  
 \end{tabularx}
 }
@@ -1595,9 +1675,9 @@ Correo Electrónico          		\\ \hline
 \resizebox{\textwidth}{!}{%
 \begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Seguimiento de avance}           \\ \hline
-\rowcolor[HTML]{C0A0C0} 
+\rowcolor[HTML]{CCFFFF} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{CCFFFF}Seguimiento de avance}           \\ \hline
+\rowcolor[HTML]{CCFFFF} 
 Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
 
 5.1 &
@@ -1605,98 +1685,98 @@ Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimient
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
 
 5.2 &
 \% de Cableado del robot. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
 
 5.3 &
 \% de Verif. de la electrónica. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline  
+Correo electrónico          		\\ \hline  
 
 6. &
 \% de Integración del HW. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.1 &
 \% de SW del PWM. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.2 &
 \% de SW de comunicación. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.3 &
 \% de SW del GPS. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.4 &
-\% de SW del acelerómetro. &
+\% del programa del acelerómetro. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.6 &
-\% de SW de AR. &
+\% del programa de AR. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.7 &
-\% de SW de PID. &
+\% del programa de PID. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 7.8 &
-\% de Integración de los SW. &
+\% de integración de los módulos de los distintos programas. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 8 &
-\% de Verificación. &
+\% de verificación. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 9 &
-\% de Validación. &
+\% de validación. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 10.1 &
-\% de Redacción de informe de avance. &
+\% de redacción de informe de avance. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c}Director\\Jurado \end{tabular} &
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
 
 \end{tabularx}
 }
@@ -1709,46 +1789,46 @@ Correo Electrónico          		\\ \hline
 \resizebox{\textwidth}{!}{%
 \begin{tabularx}{\textwidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0A0C0}Seguimiento de avance}           \\ \hline
-\rowcolor[HTML]{C0A0C0} 
+\rowcolor[HTML]{CCFFFF} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{CCFFFF}Seguimiento de avance}           \\ \hline
+\rowcolor[HTML]{CCFFFF} 
 Nº de Tarea & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
 
 
 10.2 &
-\% de Redacción del manual de uso. &
+\% de redacción del manual de uso. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
 
 10.3 &
-\% de Elaboración de circuitos esquemáticos. &
+\% de elaboración de circuitos esquemáticos. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline 
+Correo electrónico          		\\ \hline 
 
 10.4 &
-\% de Redacción de memoria. &
+\% de redacción de memoria. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c}Director\\Jurado \end{tabular} &
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
 
 10.5 &
-\% de Preparación de la presentación. &
+\% de preparación de la presentación. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c} Director\end{tabular}&
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
 
 10.6 &
-\% de Presentación pública. &
+\% de presentación pública. &
 Unifica vez &
 \begin{tabular}{c} Pablo D.\\Folino \end{tabular} &
 \begin{tabular}{c}Director\\Jurado \end{tabular} &
-Correo Electrónico          		\\ \hline
+Correo electrónico          		\\ \hline
 
 \end{tabularx}
 }
@@ -1765,22 +1845,24 @@ Correo Electrónico          		\\ \hline
 Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
 
 \begin{itemize}
-\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:\\
-Encargado:Pablo Daniel Folino
+\item Pautas de trabajo que se seguirán para analizar si se respetó
+el plan de proyecto original:\\
+Encargado: Pablo Daniel Folino
 	\begin{itemize}
 	\item Se avaluarán los requerimientos y los objetivos alcanzados frente a los planteados en el plan original.
-	\item Se pondrá especial interés si se cumplieron los lineamientos en cuanto tiempos de entrega y ejecución.
+	\item Se pondrá especial interés en si se cumplieron los lineamientos en cuanto a tiempos de entrega y ejecución.
 	\end{itemize}	
 \item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:\\
-Encargado:Pablo Daniel Folino
+Encargado: Pablo Daniel Folino
 	\begin{itemize}
 	\item Se establecerá cual fue la mejor combinación de algoritmos de aprendizaje por refuerzo que llevaron mejor la tarea.
 	\item Se identificarán el uso de nuevas herramientas o procedimientos en caso de corresponder.
 	\end{itemize}
 \item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:\\
-Encargado:Pablo Daniel Folino
+Encargado: Pablo Daniel Folino
 	\begin{itemize}
-	\item Luego de la presentación del proyecto mediante la defensa pública , se procederá a agradecer a todas las personas que participaron del desarrollo del proyecto, al director del proyecto, a los compañeros y a las autoridades del CESE.
+	\item Luego de la presentación del proyecto mediante la defensa
+	pública, se procederá a agradecer a todas las personas que participaron del desarrollo del proyecto, al director del proyecto, a los compañeros y a las autoridades de la CESE.
 	\end{itemize}
 \end{itemize}
 
